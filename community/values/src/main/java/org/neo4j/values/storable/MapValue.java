@@ -37,6 +37,7 @@ import org.neo4j.helpers.collection.PrefetchingIterator;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.ValueMapper;
+import org.neo4j.values.VirtualValue;
 import org.neo4j.values.virtual.ListValue;
 import org.neo4j.values.virtual.VirtualValues;
 
@@ -82,11 +83,30 @@ public abstract class MapValue extends Value
     MapValue( Map<String,AnyValue> map )
     {
         this.map = map;
+
+        for ( Map.Entry<String, AnyValue> entry : map.entrySet() )
+        {
+            if ( entry.getValue() instanceof Value )
+            {
+                this.content = this.content.Combine(MapValueContent.STORABLE);
+            }
+            else if ( entry.getValue() instanceof VirtualValue )
+            {
+                this.content = this.content.Combine(MapValueContent.VIRTUAL);
+            }
+        }
     }
 
     MapValue( )
     {
         this.map = null;
+    }
+
+    MapValueContent content = MapValueContent.EMPTY;
+
+    public MapValueContent getContent()
+    {
+        return this.content;
     }
 
     static final class MapWrappingMapValue extends MapValue

@@ -29,9 +29,12 @@ import org.neo4j.values.AnyValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
+import static org.neo4j.values.storable.Values.intValue;
+import static org.neo4j.values.storable.Values.stringArray;
 import static org.neo4j.values.storable.Values.stringValue;
 import static org.neo4j.values.storable.Values.EMPTY_MAP;
 import static org.neo4j.values.storable.Values.map;
+import static org.neo4j.values.virtual.VirtualValues.nodeValue;
 
 class MapValueTest
 {
@@ -154,6 +157,27 @@ class MapValueTest
                 "k3", stringValue( "v3" ),
                 "k4", stringValue( "version4" )
         ) );
+    }
+
+    @Test
+    void shouldSetContentToStorableMap()
+    {
+        MapValue onlyStorable = mapValue("k1", stringValue("v1"), "k2", intValue(0));
+        assertThat( onlyStorable.getContent(), equalTo( MapValueContent.STORABLE ) );
+    }
+
+    @Test
+    void shouldSetContentToMixedMap()
+    {
+        MapValue onlyStorable = mapValue("k1", stringValue("v1"), "k2", nodeValue(10L,stringArray(),mapValue()));
+        assertThat( onlyStorable.getContent(), equalTo( MapValueContent.MIXED ) );
+    }
+
+    @Test
+    void shouldBeEmptyMap()
+    {
+        MapValue emptyMap = mapValue();
+        assertThat( emptyMap.getContent(), equalTo( MapValueContent.EMPTY ) );
     }
 
     private void assertMapValueEquals( MapValue a, MapValue b )
