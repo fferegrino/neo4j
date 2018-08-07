@@ -25,7 +25,6 @@ import java.util.Arrays;
 
 import org.neo4j.helpers.collection.Iterables;
 import org.neo4j.values.AnyValue;
-import org.neo4j.values.storable.MapValue;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;

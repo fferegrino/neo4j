@@ -77,13 +77,24 @@ public abstract class MapValue extends Value
         }
     };
 
+    protected final Map<String,AnyValue> map;
+
+    MapValue( Map<String,AnyValue> map )
+    {
+        this.map = map;
+    }
+
+    MapValue( )
+    {
+        this.map = null;
+    }
+
     static final class MapWrappingMapValue extends MapValue
     {
-        private final Map<String,AnyValue> map;
 
         MapWrappingMapValue( Map<String,AnyValue> map )
         {
-            this.map = map;
+            super( map );
         }
 
         public Iterable<String> keySet()
@@ -669,37 +680,44 @@ public abstract class MapValue extends Value
     }
 
     @Override
-    int unsafeCompareTo(Value other) {
+    int unsafeCompareTo( Value other )
+    {
         return 0;
     }
 
     @Override
-    public <E extends Exception> void writeTo(ValueWriter<E> writer) throws E {
+    public <E extends Exception> void writeTo( ValueWriter<E> writer ) throws E
+    {
 
     }
 
     @Override
-    public Object asObjectCopy() {
+    public Object asObjectCopy()
+    {
         return null;
     }
 
     @Override
-    public String prettyPrint() {
+    public String prettyPrint()
+    {
         return null;
     }
 
     @Override
-    public NumberType numberType() {
+    public NumberType numberType()
+    {
         return null;
     }
 
     @Override
-    public long updateHash(HashFunction hashFunction, long hash) {
+    public long updateHash( HashFunction hashFunction, long hash )
+    {
         return 0;
     }
 
     @Override
-    public String getTypeName() {
+    public String getTypeName()
+    {
         return null;
     }
 
