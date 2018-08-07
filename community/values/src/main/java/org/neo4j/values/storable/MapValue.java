@@ -32,18 +32,17 @@ import java.util.function.BiFunction;
 import java.util.stream.StreamSupport;
 
 import org.neo4j.function.ThrowingBiConsumer;
+import org.neo4j.hashing.HashFunction;
 import org.neo4j.helpers.collection.PrefetchingIterator;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.ValueMapper;
-import org.neo4j.values.VirtualValue;
 import org.neo4j.values.virtual.ListValue;
-import org.neo4j.values.virtual.VirtualValueGroup;
 import org.neo4j.values.virtual.VirtualValues;
 
 import static org.neo4j.values.storable.Values.NO_VALUE;
 
-public abstract class MapValue extends VirtualValue
+public abstract class MapValue extends Value
 {
     public static MapValue EMPTY = new MapValue()
     {
@@ -477,7 +476,7 @@ public abstract class MapValue extends VirtualValue
     }
 
     @Override
-    public boolean equals( VirtualValue other )
+    public boolean equals( Value other )
     {
         if ( !(other instanceof MapValue) )
         {
@@ -516,13 +515,12 @@ public abstract class MapValue extends VirtualValue
     }
 
     @Override
-    public VirtualValueGroup valueGroup()
+    public ValueGroup valueGroup()
     {
-        return VirtualValueGroup.MAP;
+        return ValueGroup.MAP;
     }
 
-    @Override
-    public int compareTo( VirtualValue other, Comparator<AnyValue> comparator )
+    public int compareTo( Value other, Comparator<AnyValue> comparator )
     {
         if ( !(other instanceof MapValue) )
         {
@@ -668,6 +666,41 @@ public abstract class MapValue extends VirtualValue
         } );
         sb.append( '}' );
         return sb.toString();
+    }
+
+    @Override
+    int unsafeCompareTo(Value other) {
+        return 0;
+    }
+
+    @Override
+    public <E extends Exception> void writeTo(ValueWriter<E> writer) throws E {
+
+    }
+
+    @Override
+    public Object asObjectCopy() {
+        return null;
+    }
+
+    @Override
+    public String prettyPrint() {
+        return null;
+    }
+
+    @Override
+    public NumberType numberType() {
+        return null;
+    }
+
+    @Override
+    public long updateHash(HashFunction hashFunction, long hash) {
+        return 0;
+    }
+
+    @Override
+    public String getTypeName() {
+        return null;
     }
 
     public abstract int size();

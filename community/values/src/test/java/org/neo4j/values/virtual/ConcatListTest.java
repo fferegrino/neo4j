@@ -28,7 +28,7 @@ import static org.neo4j.values.storable.Values.booleanValue;
 import static org.neo4j.values.storable.Values.intValue;
 import static org.neo4j.values.storable.Values.longValue;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValueTestUtil.map;
+import static org.neo4j.values.storable.ValueTestUtil.map;
 import static org.neo4j.values.virtual.VirtualValues.EMPTY_LIST;
 import static org.neo4j.values.virtual.VirtualValues.concat;
 import static org.neo4j.values.virtual.VirtualValues.list;

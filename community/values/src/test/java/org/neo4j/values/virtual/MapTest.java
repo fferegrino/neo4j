@@ -22,7 +22,7 @@ package org.neo4j.values.virtual;
 import org.junit.jupiter.api.Test;
 
 import static org.neo4j.values.utils.AnyValueTestUtil.assertEqual;
-import static org.neo4j.values.virtual.VirtualValueTestUtil.map;
+import static org.neo4j.values.storable.ValueTestUtil.map;
 
 class MapTest
 {

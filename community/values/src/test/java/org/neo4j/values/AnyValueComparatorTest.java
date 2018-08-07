@@ -42,7 +42,7 @@ import static org.neo4j.values.storable.Values.pointValue;
 import static org.neo4j.values.storable.Values.stringArray;
 import static org.neo4j.values.storable.Values.stringValue;
 import static org.neo4j.values.virtual.VirtualValueTestUtil.list;
-import static org.neo4j.values.virtual.VirtualValueTestUtil.map;
+import static org.neo4j.values.storable.ValueTestUtil.map;
 import static org.neo4j.values.virtual.VirtualValueTestUtil.nodes;
 import static org.neo4j.values.virtual.VirtualValueTestUtil.relationships;
 import static org.neo4j.values.storable.Values.emptyMap;
