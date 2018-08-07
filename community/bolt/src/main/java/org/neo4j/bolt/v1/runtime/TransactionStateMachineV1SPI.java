@@ -50,7 +50,7 @@ import org.neo4j.kernel.impl.query.clientconnection.BoltConnectionInfo;
 import org.neo4j.kernel.impl.query.clientconnection.ClientConnectionInfo;
 import org.neo4j.kernel.impl.transaction.log.TransactionIdStore;
 import org.neo4j.kernel.internal.GraphDatabaseAPI;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static java.lang.String.format;
 import static org.neo4j.internal.kernel.api.Transaction.Type.explicit;

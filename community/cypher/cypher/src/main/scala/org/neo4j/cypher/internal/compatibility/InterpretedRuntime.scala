@@ -28,7 +28,7 @@ import org.neo4j.cypher.internal.runtime.interpreted.UpdateCountingQueryContext
 import org.neo4j.cypher.internal.runtime.interpreted.commands.convert.{CommunityExpressionConverter, ExpressionConverters}
 import org.neo4j.cypher.internal.runtime.interpreted.pipes.PipeExecutionBuilderContext
 import org.neo4j.cypher.internal.runtime.{ExecutionMode, InternalExecutionResult, ProfileMode, QueryContext}
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 import org.opencypher.v9_0.frontend.PlannerName
 import org.opencypher.v9_0.frontend.phases.InternalNotificationLogger
 import org.opencypher.v9_0.util.PeriodicCommitInOpenTransactionException

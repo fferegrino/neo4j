@@ -28,7 +28,7 @@ import org.neo4j.bolt.messaging.RequestMessage;
 import org.neo4j.bolt.messaging.RequestMessageDecoder;
 import org.neo4j.bolt.runtime.BoltResponseHandler;
 import org.neo4j.bolt.v1.messaging.request.InitMessage;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public class InitMessageDecoder implements RequestMessageDecoder
 {

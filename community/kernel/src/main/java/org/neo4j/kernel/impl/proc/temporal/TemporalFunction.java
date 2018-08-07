@@ -45,14 +45,14 @@ import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.TemporalValue;
 import org.neo4j.values.storable.TextValue;
 import org.neo4j.values.storable.Values;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static java.util.Collections.singletonList;
 import static org.neo4j.helpers.collection.Iterables.single;
 import static org.neo4j.internal.kernel.api.procs.DefaultParameterValue.nullValue;
 import static org.neo4j.internal.kernel.api.procs.FieldSignature.inputField;
 import static org.neo4j.values.storable.Values.NO_VALUE;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public abstract class TemporalFunction<T extends AnyValue> implements CallableUserFunction
 {

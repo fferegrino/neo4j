@@ -48,10 +48,10 @@ import org.neo4j.kernel.impl.logging.NullLogService;
 import org.neo4j.kernel.impl.util.HexPrinter;
 import org.neo4j.kernel.impl.util.ValueUtils;
 import org.neo4j.values.AnyValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.RelationshipValue;
-import org.neo4j.values.virtual.VirtualValues;
 
 import static java.lang.System.lineSeparator;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -65,7 +65,7 @@ import static org.neo4j.helpers.collection.MapUtil.map;
 import static org.neo4j.values.storable.Values.intValue;
 import static org.neo4j.values.storable.Values.stringArray;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.map;
+import static org.neo4j.values.storable.Values.map;
 import static org.neo4j.values.virtual.VirtualValues.nodeValue;
 import static org.neo4j.values.virtual.VirtualValues.relationshipValue;
 
@@ -118,8 +118,8 @@ public class BoltRequestMessageTest
     public void shouldSerializeRelationship() throws Throwable
     {
         RelationshipValue rel = relationshipValue( 12L,
-                nodeValue( 1L, stringArray(), VirtualValues.EMPTY_MAP ),
-                nodeValue( 2L, stringArray(), VirtualValues.EMPTY_MAP ),
+                nodeValue( 1L, stringArray(), Values.EMPTY_MAP ),
+                nodeValue( 2L, stringArray(), Values.EMPTY_MAP ),
                 stringValue( "KNOWS" ), map( new String[]{"name", "age"},
                         new AnyValue[]{stringValue( "Bob" ), intValue( 14 )} ) );
         assertThat( serialized( rel ),

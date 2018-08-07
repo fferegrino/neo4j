@@ -33,7 +33,7 @@ import org.neo4j.bolt.v1.packstream.PackStream;
 import org.neo4j.kernel.api.exceptions.Status;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.StringValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.neo4j.bolt.v1.runtime.spi.Records.record;
 

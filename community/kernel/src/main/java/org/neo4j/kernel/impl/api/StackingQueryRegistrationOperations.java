@@ -29,7 +29,7 @@ import org.neo4j.kernel.impl.util.MonotonicCounter;
 import org.neo4j.resources.CpuClock;
 import org.neo4j.resources.HeapAllocation;
 import org.neo4j.time.SystemNanoClock;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public class StackingQueryRegistrationOperations implements QueryRegistrationOperations
 {

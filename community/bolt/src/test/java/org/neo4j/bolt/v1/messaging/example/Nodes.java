@@ -22,7 +22,6 @@ package org.neo4j.bolt.v1.messaging.example;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.NodeValue;
-import org.neo4j.values.virtual.VirtualValues;
 
 import static org.neo4j.values.storable.Values.stringArray;
 import static org.neo4j.values.storable.Values.stringValue;
@@ -33,22 +32,22 @@ public class Nodes
     public static final NodeValue ALICE = nodeValue(
             1001L,
             stringArray( "Person", "Employee" ),
-            VirtualValues.map( new String[]{"name", "age"},
+            Values.map( new String[]{"name", "age"},
                     new AnyValue[]{stringValue( "Alice" ), Values.longValue( 33L )} ) );
     public static final NodeValue BOB = nodeValue(
             1002L,
             stringArray( "Person", "Employee" ),
-            VirtualValues.map( new String[]{"name", "age"},
+            Values.map( new String[]{"name", "age"},
                     new AnyValue[]{stringValue( "Bob" ), Values.longValue( 44L )} ) );
     public static final NodeValue CAROL = nodeValue(
             1003L,
             stringArray( "Person" ),
-            VirtualValues.map( new String[]{"name"},
+            Values.map( new String[]{"name"},
                     new AnyValue[]{stringValue( "Carol" )} ) );
     public static final NodeValue DAVE = nodeValue(
             1004L,
             stringArray(),
-            VirtualValues.map( new String[]{"name"},
+            Values.map( new String[]{"name"},
                     new AnyValue[]{stringValue( "Dave" )} ) );
 
     private Nodes()

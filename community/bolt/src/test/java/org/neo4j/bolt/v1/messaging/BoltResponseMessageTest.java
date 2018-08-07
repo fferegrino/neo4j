@@ -38,9 +38,9 @@ import org.neo4j.kernel.impl.logging.NullLogService;
 import org.neo4j.kernel.impl.util.HexPrinter;
 import org.neo4j.kernel.impl.util.ValueUtils;
 import org.neo4j.values.AnyValue;
+import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.RelationshipValue;
-import org.neo4j.values.virtual.VirtualValues;
 
 import static java.lang.System.lineSeparator;
 import static java.util.Arrays.asList;
@@ -76,7 +76,7 @@ public class BoltResponseMessageTest
     public void shouldHandleCommonMessages() throws Throwable
     {
         assertSerializes( new RecordMessage( record( longValue( 1L ), stringValue( "b" ), longValue( 2L ) ) ) );
-        assertSerializes( new SuccessMessage( VirtualValues.EMPTY_MAP ) );
+        assertSerializes( new SuccessMessage( Values.EMPTY_MAP ) );
         assertSerializes( new FailureMessage( Status.General.UnknownError, "Err" ) );
         assertSerializes( IGNORED_MESSAGE );
     }
@@ -118,7 +118,7 @@ public class BoltResponseMessageTest
     @Test
     public void shouldSerializeNode() throws Throwable
     {
-        NodeValue nodeValue = nodeValue( 12L, stringArray( "User", "Banana" ), VirtualValues
+        NodeValue nodeValue = nodeValue( 12L, stringArray( "User", "Banana" ), Values
                 .map( new String[]{"name", "age"},
                         new AnyValue[]{stringValue( "Bob" ), intValue( 14 )} ) );
         assertThat( serialized( nodeValue ),
@@ -131,9 +131,9 @@ public class BoltResponseMessageTest
     public void shouldSerializeRelationship() throws Throwable
     {
         RelationshipValue rel = relationshipValue( 12L,
-                nodeValue( 1L, stringArray(), VirtualValues.EMPTY_MAP ),
-                nodeValue( 2L, stringArray(), VirtualValues.EMPTY_MAP ),
-                stringValue( "KNOWS" ), VirtualValues.map( new String[]{"name", "age"},
+                nodeValue( 1L, stringArray(), Values.EMPTY_MAP ),
+                nodeValue( 2L, stringArray(), Values.EMPTY_MAP ),
+                stringValue( "KNOWS" ), Values.map( new String[]{"name", "age"},
                         new AnyValue[]{stringValue( "Bob" ), intValue( 14 )} ) );
         assertThat( serialized( rel ),
                 equalTo( "B1 71 91 B5 52 0C 01 02 85 4B 4E 4F 57 53 A2 84" + lineSeparator() +

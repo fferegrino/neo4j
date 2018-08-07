@@ -165,7 +165,7 @@ class TriadicSelectionPipeTest extends CypherFunSuite {
 
 //  private def createFakeDataWith(keys: Array[String], data: (Int, List[Any])*) = {
 //    def nodeWithId(id: Long) = {
-//      VirtualValues.nodeValue(id, Values.stringArray(), VirtualValues.EMPTY_MAP)
+//      VirtualValues.nodeValue(id, Values.stringArray(), Values.EMPTY_MAP)
 //    }
 //
 //    data.flatMap {

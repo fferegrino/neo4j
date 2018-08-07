@@ -20,7 +20,6 @@
 package org.neo4j.kernel.impl.proc.temporal;
 
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.IsoFields;
 import java.time.temporal.TemporalUnit;
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,7 +39,7 @@ import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.DurationValue;
 import org.neo4j.values.storable.TemporalValue;
 import org.neo4j.values.storable.TextValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.neo4j.internal.kernel.api.procs.FieldSignature.inputField;
 import static org.neo4j.values.storable.Values.NO_VALUE;

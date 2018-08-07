@@ -31,7 +31,7 @@ import org.neo4j.cypher.internal.runtime.planDescription.{InternalPlanDescriptio
 import org.neo4j.cypher.internal.runtime.{InternalExecutionResult, _}
 import org.opencypher.v9_0.util.{CypherException, ProfilerStatisticsNotReadyException, TaskCloser}
 import org.neo4j.cypher.internal.v3_5.logical.plans.LogicalPlan
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 
 import scala.collection.mutable
 

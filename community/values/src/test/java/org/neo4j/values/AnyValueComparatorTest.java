@@ -45,7 +45,7 @@ import static org.neo4j.values.virtual.VirtualValueTestUtil.list;
 import static org.neo4j.values.virtual.VirtualValueTestUtil.map;
 import static org.neo4j.values.virtual.VirtualValueTestUtil.nodes;
 import static org.neo4j.values.virtual.VirtualValueTestUtil.relationships;
-import static org.neo4j.values.virtual.VirtualValues.emptyMap;
+import static org.neo4j.values.storable.Values.emptyMap;
 import static org.neo4j.values.virtual.VirtualValues.node;
 import static org.neo4j.values.virtual.VirtualValues.nodeValue;
 import static org.neo4j.values.virtual.VirtualValues.path;

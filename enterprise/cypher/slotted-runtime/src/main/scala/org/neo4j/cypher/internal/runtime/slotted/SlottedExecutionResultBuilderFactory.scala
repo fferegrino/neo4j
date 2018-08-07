@@ -25,7 +25,7 @@ import org.neo4j.cypher.internal.compatibility.v3_5.runtime.executionplan.{BaseE
 import org.neo4j.cypher.internal.runtime.interpreted.ExecutionContext
 import org.neo4j.cypher.internal.runtime.interpreted.pipes.Pipe
 import org.neo4j.cypher.internal.v3_5.logical.plans.LogicalPlan
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 
 import scala.collection.mutable
 

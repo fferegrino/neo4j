@@ -55,7 +55,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 /**
  * This tests network fragmentation of messages. Given a set of messages, it will serialize and chunk the message up

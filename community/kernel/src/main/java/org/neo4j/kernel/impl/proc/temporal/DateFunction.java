@@ -29,7 +29,7 @@ import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.DateValue;
 import org.neo4j.values.storable.TemporalValue;
 import org.neo4j.values.storable.TextValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.neo4j.internal.kernel.api.procs.Neo4jTypes.NTDate;
 

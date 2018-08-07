@@ -45,7 +45,7 @@ import org.neo4j.function.ThrowingBiConsumer;
 import org.neo4j.graphdb.TransactionFailureException;
 import org.neo4j.graphdb.security.AuthorizationExpiredException;
 import org.neo4j.kernel.api.exceptions.Status;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.Values;
 
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -549,7 +549,7 @@ public class BoltStateMachineTest
     @Test
     public void shouldInvokeResponseHandlerOnNextRunMessageOnMarkFailedIfNoHandler() throws Exception
     {
-        testMarkFailedOnNextMessage( ( machine, handler ) -> machine.process( new RunMessage( "RETURN 1", VirtualValues.EMPTY_MAP ), handler ) );
+        testMarkFailedOnNextMessage( ( machine, handler ) -> machine.process( new RunMessage( "RETURN 1", Values.EMPTY_MAP ), handler ) );
     }
 
     @Test
@@ -637,7 +637,7 @@ public class BoltStateMachineTest
     public void shouldInvokeResponseHandlerOnNextRunMessageOnMarkFailedIfAlreadyFailedAndNoHandler() throws Exception
     {
         testMarkFailedShouldYieldIgnoredIfAlreadyFailed(
-                ( machine, handler ) -> machine.process( new RunMessage( "RETURN 1", VirtualValues.EMPTY_MAP ), handler ) );
+                ( machine, handler ) -> machine.process( new RunMessage( "RETURN 1", Values.EMPTY_MAP ), handler ) );
     }
 
     @Test

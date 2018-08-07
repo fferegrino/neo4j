@@ -44,7 +44,7 @@ import org.neo4j.helpers.collection.Iterators
 import org.neo4j.kernel.impl.util.ValueUtils
 import org.neo4j.values.AnyValue
 import org.neo4j.values.storable._
-import org.neo4j.values.virtual.{ListValue, MapValue}
+import org.neo4j.values.virtual.ListValue
 
 import scala.collection.JavaConverters
 import scala.collection.JavaConverters._

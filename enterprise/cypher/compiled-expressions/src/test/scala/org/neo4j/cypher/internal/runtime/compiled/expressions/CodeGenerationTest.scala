@@ -40,7 +40,7 @@ import org.neo4j.values.storable.LocalTimeValue.localTime
 import org.neo4j.values.storable.Values._
 import org.neo4j.values.storable._
 import org.neo4j.values.virtual.VirtualValues._
-import org.neo4j.values.virtual.{MapValue, NodeValue, RelationshipValue, VirtualValues}
+import org.neo4j.values.virtual.{NodeValue, RelationshipValue, VirtualValues}
 import org.neo4j.values.{AnyValue, AnyValues}
 import org.opencypher.v9_0.ast.AstConstructionTestSupport
 import org.opencypher.v9_0.expressions

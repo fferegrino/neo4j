@@ -39,7 +39,7 @@ import org.neo4j.kernel.impl.factory.GraphDatabaseFacade;
 import org.neo4j.kernel.impl.query.QueryExecutionEngine;
 import org.neo4j.logging.AssertableLogProvider;
 import org.neo4j.server.web.HttpHeaderUtils;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.Values;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -75,7 +75,7 @@ public class CypherExecutorTest
         CypherExecutor cypherExecutor = new CypherExecutor( database, logProvider );
         cypherExecutor.start();
 
-        cypherExecutor.createTransactionContext( QUERY, VirtualValues.emptyMap(), request );
+        cypherExecutor.createTransactionContext( QUERY, Values.emptyMap(), request );
 
         verify( databaseQueryService ).beginTransaction( KernelTransaction.Type.implicit, AUTH_DISABLED );
         logProvider.assertNoLoggingOccurred();
@@ -90,7 +90,7 @@ public class CypherExecutorTest
         CypherExecutor cypherExecutor = new CypherExecutor( database, logProvider );
         cypherExecutor.start();
 
-        cypherExecutor.createTransactionContext( QUERY, VirtualValues.emptyMap(), request );
+        cypherExecutor.createTransactionContext( QUERY, Values.emptyMap(), request );
 
         verify( databaseQueryService ).beginTransaction( KernelTransaction.Type.implicit, AUTH_DISABLED,
                 CUSTOM_TRANSACTION_TIMEOUT, TimeUnit.MILLISECONDS );
@@ -106,7 +106,7 @@ public class CypherExecutorTest
         CypherExecutor cypherExecutor = new CypherExecutor( database, logProvider );
         cypherExecutor.start();
 
-        cypherExecutor.createTransactionContext( QUERY, VirtualValues.emptyMap(), request );
+        cypherExecutor.createTransactionContext( QUERY, Values.emptyMap(), request );
 
         verify( databaseQueryService ).beginTransaction( KernelTransaction.Type.implicit, AUTH_DISABLED );
         logProvider.assertContainsMessageContaining( "Fail to parse `max-execution-time` header with value: 'not a " +
@@ -122,7 +122,7 @@ public class CypherExecutorTest
         CypherExecutor cypherExecutor = new CypherExecutor( database, logProvider );
         cypherExecutor.start();
 
-        cypherExecutor.createTransactionContext( QUERY, VirtualValues.emptyMap(), request );
+        cypherExecutor.createTransactionContext( QUERY, Values.emptyMap(), request );
 
         verify( databaseQueryService ).beginTransaction( KernelTransaction.Type.implicit, AUTH_DISABLED );
         logProvider.assertNoLoggingOccurred();

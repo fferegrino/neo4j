@@ -39,7 +39,7 @@ import org.neo4j.kernel.impl.query.ResultBuffer;
 import org.neo4j.kernel.impl.query.TransactionalContext;
 import org.neo4j.kernel.monitoring.Monitors;
 import org.neo4j.logging.LogProvider;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 /**
  * To run a Cypher query, use this class.

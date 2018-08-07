@@ -55,7 +55,7 @@ import static org.neo4j.kernel.api.security.AuthToken.CREDENTIALS;
 import static org.neo4j.kernel.api.security.AuthToken.PRINCIPAL;
 import static org.neo4j.values.storable.Values.TRUE;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 class ConnectedStateTest
 {

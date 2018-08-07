@@ -42,8 +42,7 @@ import org.neo4j.server.rest.repr.InvalidArgumentsException;
 import org.neo4j.server.rest.repr.OutputFormat;
 import org.neo4j.server.rest.transactional.CommitOnSuccessfulStatusCodeRepresentationWriteHandler;
 import org.neo4j.udc.UsageData;
-import org.neo4j.values.VirtualValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.neo4j.udc.UsageDataKeys.Features.http_cypher_endpoint;
 import static org.neo4j.udc.UsageDataKeys.features;

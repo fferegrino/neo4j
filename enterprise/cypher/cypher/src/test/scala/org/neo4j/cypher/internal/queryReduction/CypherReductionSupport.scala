@@ -48,7 +48,7 @@ import org.neo4j.kernel.impl.query.{Neo4jTransactionalContextFactory, Transactio
 import org.neo4j.kernel.monitoring.Monitors
 import org.neo4j.logging.NullLog
 import org.neo4j.test.TestGraphDatabaseFactory
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.Values.EMPTY_MAP
 import org.opencypher.v9_0.ast._
 import org.opencypher.v9_0.ast.prettifier.{ExpressionStringifier, Prettifier}
 import org.opencypher.v9_0.ast.semantics.SemanticState

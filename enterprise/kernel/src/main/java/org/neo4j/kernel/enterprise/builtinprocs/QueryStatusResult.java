@@ -39,7 +39,7 @@ import org.neo4j.kernel.impl.core.EmbeddedProxySPI;
 import org.neo4j.kernel.impl.query.clientconnection.ClientConnectionInfo;
 import org.neo4j.kernel.impl.util.BaseToObjectValueWriter;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static java.util.Collections.singletonList;
 import static org.neo4j.kernel.enterprise.builtinprocs.ProceduresTimeFormatHelper.formatInterval;

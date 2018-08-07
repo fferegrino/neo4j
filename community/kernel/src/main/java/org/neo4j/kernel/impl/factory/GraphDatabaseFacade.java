@@ -113,7 +113,7 @@ import org.neo4j.kernel.impl.util.ValueUtils;
 import org.neo4j.kernel.internal.GraphDatabaseAPI;
 import org.neo4j.storageengine.api.EntityType;
 import org.neo4j.values.storable.Values;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static java.lang.String.format;
 import static org.neo4j.graphdb.factory.GraphDatabaseSettings.transaction_timeout;

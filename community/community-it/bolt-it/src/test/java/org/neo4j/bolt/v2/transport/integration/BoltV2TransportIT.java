@@ -64,7 +64,7 @@ import static org.neo4j.values.storable.LocalTimeValue.localTime;
 import static org.neo4j.values.storable.TimeValue.time;
 import static org.neo4j.values.storable.Values.longValue;
 import static org.neo4j.values.storable.Values.pointValue;
-import static org.neo4j.values.virtual.VirtualValues.map;
+import static org.neo4j.values.storable.Values.map;
 
 @RunWith( Parameterized.class )
 public class BoltV2TransportIT

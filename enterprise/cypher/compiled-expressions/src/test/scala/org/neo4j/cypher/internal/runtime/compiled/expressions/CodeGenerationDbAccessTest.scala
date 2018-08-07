@@ -29,7 +29,7 @@ import org.neo4j.cypher.internal.runtime.DbAccess
 import org.neo4j.cypher.internal.runtime.interpreted.ExecutionContext
 import org.neo4j.values.storable.Values
 import org.neo4j.values.storable.Values.{NO_VALUE, stringValue}
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.Values.EMPTY_MAP
 import org.neo4j.values.virtual.{NodeValue, RelationshipValue}
 import org.opencypher.v9_0.ast.AstConstructionTestSupport
 import org.opencypher.v9_0.expressions.{Expression, SemanticDirection}

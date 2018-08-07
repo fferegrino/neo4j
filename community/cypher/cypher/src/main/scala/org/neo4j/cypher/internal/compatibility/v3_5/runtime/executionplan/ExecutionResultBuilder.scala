@@ -26,7 +26,7 @@ import org.opencypher.v9_0.frontend.phases.InternalNotificationLogger
 import org.neo4j.cypher.internal.planner.v3_5.spi.PlanningAttributes.Cardinalities
 import org.neo4j.cypher.internal.runtime.interpreted.pipes.PipeDecorator
 import org.neo4j.cypher.internal.runtime.{ExecutionMode, InternalExecutionResult, QueryContext}
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 
 trait ExecutionResultBuilder {
   def setQueryContext(context: QueryContext)

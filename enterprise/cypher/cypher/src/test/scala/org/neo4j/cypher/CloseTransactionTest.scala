@@ -41,6 +41,8 @@ import org.neo4j.kernel.impl.core.ThreadToStatementContextBridge
 import org.neo4j.kernel.impl.proc.Procedures
 import org.neo4j.procedure.Mode
 import org.neo4j.test.TestGraphDatabaseFactory
+import org.neo4j.values.storable.Values
+import org.neo4j.values.storable.Values.emptyMap
 import org.neo4j.values.virtual.VirtualValues
 
 import scala.collection.immutable.Map
@@ -480,10 +482,10 @@ class CloseTransactionTest extends CypherFunSuite with GraphIcing {
 
   implicit class RichExecutionEngine(engine: ExecutionEngine) {
     def profile(query: String): Result =
-      engine.profile(query, VirtualValues.emptyMap(), engine.queryService.transactionalContext(query = query -> Map()))
+      engine.profile(query, Values.emptyMap(), engine.queryService.transactionalContext(query = query -> Map()))
 
     def execute(query: String): Result =
-      engine.execute(query, VirtualValues.emptyMap(), engine.queryService.transactionalContext(query = query -> Map()))
+      engine.execute(query, Values.emptyMap(), engine.queryService.transactionalContext(query = query -> Map()))
   }
 
   class AllNodesProcedure extends CallableProcedure {

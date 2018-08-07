@@ -40,16 +40,16 @@ import org.neo4j.kernel.monitoring.Monitors;
 import org.neo4j.logging.NullLogProvider;
 import org.neo4j.test.rule.DatabaseRule;
 import org.neo4j.test.rule.ImpermanentDatabaseRule;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public class ExecutionEngineTest
 {
-    private static final MapValue NO_PARAMS = VirtualValues.emptyMap();
+    private static final MapValue NO_PARAMS = Values.emptyMap();
 
     @Rule
     public DatabaseRule database = new ImpermanentDatabaseRule();

@@ -49,5 +49,5 @@ class NodeByLabelScanPipeTest extends CypherFunSuite {
     result.map(_("a")).toList should equal(List(nodeValue(1), nodeValue(2)))
   }
 
-  private def nodeValue(id: Long) = VirtualValues.nodeValue(id, Values.EMPTY_TEXT_ARRAY, VirtualValues.EMPTY_MAP)
+  private def nodeValue(id: Long) = VirtualValues.nodeValue(id, Values.EMPTY_TEXT_ARRAY, Values.EMPTY_MAP)
 }

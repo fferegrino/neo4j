@@ -26,7 +26,7 @@ import org.neo4j.bolt.v1.runtime.bookmarking.Bookmark;
 import org.neo4j.function.ThrowingConsumer;
 import org.neo4j.internal.kernel.api.exceptions.KernelException;
 import org.neo4j.internal.kernel.api.exceptions.TransactionFailureException;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public interface StatementProcessor
 {

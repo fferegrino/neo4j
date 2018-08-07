@@ -45,7 +45,7 @@ import org.neo4j.values.storable.DurationValue;
 import org.neo4j.values.storable.TextArray;
 import org.neo4j.values.storable.TextValue;
 import org.neo4j.values.storable.Values;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.RelationshipValue;
 import org.neo4j.values.virtual.VirtualValues;

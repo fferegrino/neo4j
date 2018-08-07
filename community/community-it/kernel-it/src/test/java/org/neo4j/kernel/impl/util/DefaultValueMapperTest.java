@@ -46,7 +46,7 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 import static org.neo4j.values.virtual.VirtualValues.nodeValue;
 import static org.neo4j.values.virtual.VirtualValues.path;
 

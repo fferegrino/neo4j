@@ -34,7 +34,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.neo4j.bolt.v1.messaging.util.MessageMatchers.serialize;
 import static org.neo4j.values.storable.Values.longValue;
-import static org.neo4j.values.virtual.VirtualValues.map;
+import static org.neo4j.values.storable.Values.map;
 
 class RunMessageDecoderTest
 {

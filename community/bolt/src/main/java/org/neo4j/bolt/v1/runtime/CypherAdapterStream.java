@@ -33,8 +33,8 @@ import org.neo4j.graphdb.QueryExecutionType;
 import org.neo4j.graphdb.QueryStatistics;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.Values;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.MapValueBuilder;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.MapValueBuilder;
 import org.neo4j.values.virtual.VirtualValues;
 
 import static org.neo4j.values.storable.Values.intValue;
@@ -175,7 +175,7 @@ public class CypherAdapterStream implements BoltResult
                 if ( includePosition )
                 {
                     // only add the position if it is not empty
-                    builder.add( "position", VirtualValues.map( new String[]{"offset", "line", "column"},
+                    builder.add( "position", Values.map( new String[]{"offset", "line", "column"},
                             new AnyValue[]{
                                     intValue( pos.getOffset() ),
                                     intValue( pos.getLine() ),

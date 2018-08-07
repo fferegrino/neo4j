@@ -39,7 +39,7 @@ import static org.neo4j.bolt.testing.BoltMatchers.verifyKillsConnection;
 import static org.neo4j.helpers.collection.MapUtil.map;
 import static org.neo4j.values.storable.Values.TRUE;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public class BoltConnectionAuthIT
 {

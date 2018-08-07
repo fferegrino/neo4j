@@ -20,7 +20,7 @@
 package org.neo4j.bolt.v1.messaging.response;
 
 import org.neo4j.bolt.messaging.ResponseMessage;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public class SuccessMessage implements ResponseMessage
 {

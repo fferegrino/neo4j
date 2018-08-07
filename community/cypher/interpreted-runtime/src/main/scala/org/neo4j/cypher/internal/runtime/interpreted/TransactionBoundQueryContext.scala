@@ -344,7 +344,7 @@ sealed class TransactionBoundQueryContext(val transactionalContext: Transactiona
   override def nodeAsMap(id: Long): MapValue = {
     val nodes = nodeCursor
     reads().singleNode(id, nodes)
-    if (!nodes.next() ) VirtualValues.EMPTY_MAP
+    if (!nodes.next() ) Values.EMPTY_MAP
     else {
       val props = propertyCursor
       val tokens = tokenRead
@@ -360,7 +360,7 @@ sealed class TransactionBoundQueryContext(val transactionalContext: Transactiona
   override def relationshipAsMap(id: Long): MapValue = {
     val relationships = relationshipScanCursor
     reads().singleRelationship(id, relationships)
-    if (!relationships.next() ) VirtualValues.EMPTY_MAP
+    if (!relationships.next() ) Values.EMPTY_MAP
     else {
       val props = propertyCursor
       val tokens = tokenRead

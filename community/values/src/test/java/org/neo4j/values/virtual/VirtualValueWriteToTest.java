@@ -28,6 +28,7 @@ import java.util.Arrays;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.BufferAnyValueWriter;
 import org.neo4j.values.storable.BufferValueWriter.Specials;
+import org.neo4j.values.storable.Values;
 
 import static org.neo4j.values.BufferAnyValueWriter.Specials.beginList;
 import static org.neo4j.values.BufferAnyValueWriter.Specials.beginMap;
@@ -46,8 +47,8 @@ import static org.neo4j.values.storable.Values.stringArray;
 import static org.neo4j.values.storable.Values.stringValue;
 import static org.neo4j.values.virtual.VirtualValues.relationship;
 import static org.neo4j.values.virtual.VirtualValues.relationshipValue;
-import static org.neo4j.values.virtual.VirtualValues.emptyMap;
-import static org.neo4j.values.virtual.VirtualValues.map;
+import static org.neo4j.values.storable.Values.emptyMap;
+import static org.neo4j.values.storable.Values.map;
 import static org.neo4j.values.virtual.VirtualValues.nodeValue;
 
 @RunWith( value = Parameterized.class )
@@ -71,7 +72,7 @@ public class VirtualValueWriteToTest
                         endList()
                 ),
                 shouldWrite(
-                        VirtualValues.map(
+                        Values.map(
                                 new String[]{"foo", "bar"},
                                 new AnyValue[]{intValue( 100 ), charValue( 'c' )}
                         ),
@@ -106,11 +107,11 @@ public class VirtualValueWriteToTest
                 ),
                 // map( list( map( list() ) ) )
                 shouldWrite(
-                        VirtualValues.map(
+                        Values.map(
                                 new String[]{"foo"},
                                 new AnyValue[]{
                                         VirtualValues.list(
-                                                VirtualValues.map(
+                                                Values.map(
                                                         new String[]{"bar"},
                                                         new AnyValue[]{
                                                                 VirtualValues.list()}

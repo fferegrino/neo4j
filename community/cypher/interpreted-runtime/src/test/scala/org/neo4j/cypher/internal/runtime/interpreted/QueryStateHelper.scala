@@ -34,9 +34,8 @@ import org.neo4j.kernel.impl.query.clientconnection.ClientConnectionInfo
 import org.neo4j.kernel.impl.util.BaseToObjectValueWriter
 import org.neo4j.kernel.monitoring.{Monitors => KernelMonitors}
 import org.neo4j.values.AnyValue
-import org.neo4j.values.storable.CoordinateReferenceSystem
-import org.neo4j.values.virtual.MapValue
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.{CoordinateReferenceSystem, MapValue}
+import org.neo4j.values.storable.Values.EMPTY_MAP
 
 import scala.collection.mutable
 

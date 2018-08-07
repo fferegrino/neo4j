@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
 
 import org.neo4j.bolt.messaging.Neo4jPack;
 import org.neo4j.bolt.v1.messaging.response.SuccessMessage;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;

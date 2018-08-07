@@ -72,7 +72,7 @@ class AddTest extends CypherFunSuite {
     // Given
     val hello = "hello".getBytes(StandardCharsets.UTF_8)
     val world = "world".getBytes(StandardCharsets.UTF_8)
-    val state = QueryStateHelper.emptyWith(params = VirtualValues.map(Array("p1", "p2"), Array( utf8Value(hello), utf8Value(world))))
+    val state = QueryStateHelper.emptyWith(params = Values.map(Array("p1", "p2"), Array( utf8Value(hello), utf8Value(world))))
 
     // When
     val result = Add(ParameterExpression("p1"), ParameterExpression("p2"))(m,state)

@@ -32,7 +32,7 @@ import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.TextArray;
 import org.neo4j.values.storable.TextValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.RelationshipValue;
 

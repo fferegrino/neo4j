@@ -55,7 +55,7 @@ import static java.util.Arrays.asList;
 import static java.util.Collections.emptyMap;
 import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.neo4j.test.assertion.Assert.assertEventually;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public class ServerGroupsIT
 {

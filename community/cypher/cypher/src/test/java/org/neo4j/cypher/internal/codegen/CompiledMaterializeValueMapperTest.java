@@ -33,7 +33,7 @@ import org.neo4j.kernel.impl.util.ValueUtils;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.ListValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeReference;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.RelationshipReference;
@@ -109,12 +109,12 @@ public class CompiledMaterializeValueMapperTest
     };
 
     NodeValue nodeProxyValue = ValueUtils.fromNodeProxy( new NodeProxy( spi, 1L ) );
-    NodeValue directNodeValue = VirtualValues.nodeValue( 2L, Values.stringArray(), VirtualValues.emptyMap() );
+    NodeValue directNodeValue = VirtualValues.nodeValue( 2L, Values.stringArray(), Values.emptyMap() );
     NodeReference nodeReference = VirtualValues.node( 1L ); // Should equal nodeProxyValue when converted
 
     RelationshipValue relationshipProxyValue = ValueUtils.fromRelationshipProxy( new RelationshipProxy( spi, 11L ) );
     RelationshipValue directRelationshipValue =
-            VirtualValues.relationshipValue( 12L, nodeProxyValue, directNodeValue, Values.stringValue( "TYPE" ), VirtualValues.emptyMap() );
+            VirtualValues.relationshipValue( 12L, nodeProxyValue, directNodeValue, Values.stringValue( "TYPE" ), Values.emptyMap() );
     RelationshipReference relationshipReference = VirtualValues.relationship( 11L ); // Should equal relationshipProxyValue when converted
 
     @Test
@@ -123,8 +123,8 @@ public class CompiledMaterializeValueMapperTest
         // Given
         ListValue nodeList = VirtualValues.list( nodeProxyValue, directNodeValue );
         ListValue relationshipList = VirtualValues.list( relationshipProxyValue, directRelationshipValue );
-        MapValue nodeMap = VirtualValues.map( new String[]{"a", "b"}, new AnyValue[]{nodeProxyValue, directNodeValue} );
-        MapValue relationshipMap = VirtualValues.map( new String[]{"a", "b"}, new AnyValue[]{relationshipProxyValue, directRelationshipValue} );
+        MapValue nodeMap = Values.map( new String[]{"a", "b"}, new AnyValue[]{nodeProxyValue, directNodeValue} );
+        MapValue relationshipMap = Values.map( new String[]{"a", "b"}, new AnyValue[]{relationshipProxyValue, directRelationshipValue} );
 
         // Verify
         verifyDoesNotTouchValue( nodeProxyValue );
@@ -153,13 +153,13 @@ public class CompiledMaterializeValueMapperTest
         ListValue relationshipList = VirtualValues.list( relationshipProxyValue, directRelationshipValue, relationshipReference );
         ListValue expectedRelationshipList = VirtualValues.list( relationshipProxyValue, directRelationshipValue, relationshipProxyValue );
 
-        MapValue nodeMap = VirtualValues.map( new String[]{"a", "b", "c"}, new AnyValue[]{nodeProxyValue, directNodeValue, nodeReference} );
-        MapValue expectedNodeMap = VirtualValues.map( new String[]{"a", "b", "c"}, new AnyValue[]{nodeProxyValue, directNodeValue, nodeProxyValue} );
+        MapValue nodeMap = Values.map( new String[]{"a", "b", "c"}, new AnyValue[]{nodeProxyValue, directNodeValue, nodeReference} );
+        MapValue expectedNodeMap = Values.map( new String[]{"a", "b", "c"}, new AnyValue[]{nodeProxyValue, directNodeValue, nodeProxyValue} );
 
         MapValue relationshipMap =
-                VirtualValues.map( new String[]{"a", "b", "c"}, new AnyValue[]{relationshipProxyValue, directRelationshipValue, relationshipReference} );
+                Values.map( new String[]{"a", "b", "c"}, new AnyValue[]{relationshipProxyValue, directRelationshipValue, relationshipReference} );
         MapValue expectedRelationshipMap =
-                VirtualValues.map( new String[]{"a", "b", "c"}, new AnyValue[]{relationshipProxyValue, directRelationshipValue, relationshipProxyValue} );
+                Values.map( new String[]{"a", "b", "c"}, new AnyValue[]{relationshipProxyValue, directRelationshipValue, relationshipProxyValue} );
 
         ListValue nestedNodeList = VirtualValues.list( nodeList, nodeMap, nodeReference );
         ListValue expectedNestedNodeList = VirtualValues.list( expectedNodeList, expectedNodeMap, nodeProxyValue );
@@ -167,13 +167,13 @@ public class CompiledMaterializeValueMapperTest
         ListValue nestedRelationshipList = VirtualValues.list( relationshipList, relationshipMap, relationshipReference );
         ListValue expectedNestedRelationshipList = VirtualValues.list( expectedRelationshipList, expectedRelationshipMap, relationshipProxyValue );
 
-        MapValue nestedNodeMap = VirtualValues.map( new String[]{"a", "b", "c"}, new AnyValue[]{nodeList, nodeMap, nestedNodeList} );
+        MapValue nestedNodeMap = Values.map( new String[]{"a", "b", "c"}, new AnyValue[]{nodeList, nodeMap, nestedNodeList} );
         MapValue expectedNestedNodeMap =
-                VirtualValues.map( new String[]{"a", "b", "c"}, new AnyValue[]{expectedNodeList, expectedNodeMap, expectedNestedNodeList} );
+                Values.map( new String[]{"a", "b", "c"}, new AnyValue[]{expectedNodeList, expectedNodeMap, expectedNestedNodeList} );
 
         MapValue nestedRelationshipMap =
-                VirtualValues.map( new String[]{"a", "b", "c"}, new AnyValue[]{relationshipList, relationshipMap, nestedRelationshipList} );
-        MapValue expectedNestedRelationshipMap = VirtualValues.map( new String[]{"a", "b", "c"},
+                Values.map( new String[]{"a", "b", "c"}, new AnyValue[]{relationshipList, relationshipMap, nestedRelationshipList} );
+        MapValue expectedNestedRelationshipMap = Values.map( new String[]{"a", "b", "c"},
                 new AnyValue[]{expectedRelationshipList, expectedRelationshipMap, expectedNestedRelationshipList} );
 
         // Verify

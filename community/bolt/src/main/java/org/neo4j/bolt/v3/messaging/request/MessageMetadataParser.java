@@ -33,7 +33,7 @@ import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.LongValue;
 import org.neo4j.values.storable.Values;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 /**
  * The parsing methods in this class returns null if the specified key is not found in the input message metadata map.

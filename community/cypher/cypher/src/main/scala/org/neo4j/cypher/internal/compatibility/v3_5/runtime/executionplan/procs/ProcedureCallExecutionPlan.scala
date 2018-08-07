@@ -37,7 +37,7 @@ import org.opencypher.v9_0.util.symbols.CypherType
 import org.opencypher.v9_0.expressions.Expression
 import org.neo4j.cypher.internal.v3_5.logical.plans.ProcedureSignature
 import org.neo4j.graphdb.Notification
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 
 /**
   * Execution plan for calling procedures

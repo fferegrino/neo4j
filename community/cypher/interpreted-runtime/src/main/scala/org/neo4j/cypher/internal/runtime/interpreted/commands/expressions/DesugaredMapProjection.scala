@@ -22,8 +22,9 @@ package org.neo4j.cypher.internal.runtime.interpreted.commands.expressions
 import org.neo4j.cypher.internal.runtime.interpreted.pipes.QueryState
 import org.neo4j.cypher.internal.runtime.interpreted.{ExecutionContext, GraphElementPropertyFunctions, IsMap, LazyMap}
 import org.neo4j.values.AnyValue
-import org.neo4j.values.storable.Values
-import org.neo4j.values.virtual.{MapValueBuilder, VirtualValues}
+import org.neo4j.values.storable.Values.emptyMap
+import org.neo4j.values.storable.{MapValueBuilder, Values}
+import org.neo4j.values.virtual.VirtualValues
 
 import scala.collection.Map
 
@@ -35,7 +36,7 @@ case class DesugaredMapProjection(id: String, includeAllProps: Boolean, literalE
 
     val mapOfProperties = variableValue match {
       case v if v == Values.NO_VALUE => return Values.NO_VALUE
-      case IsMap(m) => if (includeAllProps) m(state.query) else VirtualValues.emptyMap()
+      case IsMap(m) => if (includeAllProps) m(state.query) else Values.emptyMap()
     }
     val builder = new MapValueBuilder(literalExpressions.size)
     literalExpressions.foreach {

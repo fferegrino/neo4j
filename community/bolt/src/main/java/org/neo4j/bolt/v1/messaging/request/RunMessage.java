@@ -22,8 +22,8 @@ package org.neo4j.bolt.v1.messaging.request;
 import java.util.Objects;
 
 import org.neo4j.bolt.messaging.RequestMessage;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 
 import static java.util.Objects.requireNonNull;
 
@@ -36,7 +36,7 @@ public class RunMessage implements RequestMessage
 
     public RunMessage( String statement )
     {
-        this( statement, VirtualValues.EMPTY_MAP );
+        this( statement, Values.EMPTY_MAP );
     }
 
     public RunMessage( String statement, MapValue params )

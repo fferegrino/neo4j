@@ -33,9 +33,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.neo4j.graphdb.DatabaseShutdownException;
 import org.neo4j.graphdb.Node;
-import org.neo4j.graphdb.NotInTransactionException;
 import org.neo4j.graphdb.Path;
 import org.neo4j.graphdb.PropertyContainer;
 import org.neo4j.graphdb.Relationship;
@@ -47,7 +45,7 @@ import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.DurationValue;
 import org.neo4j.values.storable.TextArray;
 import org.neo4j.values.storable.TextValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.RelationshipValue;
 

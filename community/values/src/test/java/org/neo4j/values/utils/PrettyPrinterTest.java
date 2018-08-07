@@ -37,7 +37,7 @@ import org.neo4j.values.storable.TimeValue;
 import org.neo4j.values.storable.Value;
 import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.ListValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeReference;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.PathValue;
@@ -57,7 +57,7 @@ import static org.neo4j.values.storable.TimeValue.time;
 import static org.neo4j.values.storable.Values.byteValue;
 import static org.neo4j.values.storable.Values.intValue;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 import static org.neo4j.values.virtual.VirtualValues.list;
 
 class PrettyPrinterTest
@@ -419,6 +419,6 @@ class PrettyPrinterTest
                 values[i / 2] = (AnyValue) keyValue[i];
             }
         }
-        return VirtualValues.map( keys, values );
+        return Values.map( keys, values );
     }
 }

@@ -37,7 +37,7 @@ import org.neo4j.cypher.internal.runtime.planDescription.InternalPlanDescription
 import org.neo4j.cypher.internal.runtime.planDescription.InternalPlanDescription.Arguments
 import org.neo4j.cypher.internal.v3_5.logical.plans.IndexUsage
 import org.neo4j.graphdb.Notification
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 import org.opencypher.v9_0.frontend.PlannerName
 import org.opencypher.v9_0.util.TaskCloser
 

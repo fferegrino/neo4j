@@ -28,8 +28,8 @@ import org.neo4j.cypher.internal.runtime.interpreted.commands.expressions.Expres
 import org.neo4j.cypher.internal.runtime.{ArrayBackedMap, QueryContext}
 import org.opencypher.v9_0.util.attribution.Id
 import org.neo4j.values._
-import org.neo4j.values.storable.{TextValue, Value, Values}
-import org.neo4j.values.virtual.{MapValueBuilder, VirtualValues}
+import org.neo4j.values.storable.{MapValueBuilder, TextValue, Value, Values}
+import org.neo4j.values.virtual.VirtualValues
 
 case class LoadCSVPipe(source: Pipe,
                        format: CSVFormat,

@@ -35,8 +35,8 @@ import org.neo4j.kernel.impl.util.ValueUtils
 import org.neo4j.kernel.monitoring.{Monitors => KernelMonitors}
 import org.neo4j.logging.{LogProvider, NullLogProvider}
 import org.neo4j.values.AnyValue
-import org.neo4j.values.storable.Values
-import org.neo4j.values.virtual.{MapValue, VirtualValues}
+import org.neo4j.values.storable.{MapValue, Values}
+import org.neo4j.values.virtual.VirtualValues
 import org.opencypher.v9_0.util.test_helpers.{CypherFunSuite, CypherTestSupport}
 
 import scala.collection.JavaConverters._
@@ -119,7 +119,7 @@ trait ExecutionEngineHelper {
   def asMapValue(map: Map[String, Any]): MapValue = {
     val keys = map.keys.toArray
     val values = map.values.map(asValue).toArray
-    VirtualValues.map(keys, values)
+    Values.map(keys, values)
   }
 
   def asValue(any: Any): AnyValue =

@@ -32,8 +32,8 @@ import org.neo4j.internal.kernel.api.{IndexQuery, IndexReference}
 import org.neo4j.kernel.impl.api.store.RelationshipIterator
 import org.neo4j.kernel.impl.core.EmbeddedProxySPI
 import org.neo4j.values.AnyValue
-import org.neo4j.values.storable.Value
-import org.neo4j.values.virtual.{ListValue, MapValue, NodeValue, RelationshipValue}
+import org.neo4j.values.storable.{MapValue, Value}
+import org.neo4j.values.virtual.{ListValue, NodeValue, RelationshipValue}
 import org.opencypher.v9_0.expressions.SemanticDirection
 
 import scala.collection.Iterator

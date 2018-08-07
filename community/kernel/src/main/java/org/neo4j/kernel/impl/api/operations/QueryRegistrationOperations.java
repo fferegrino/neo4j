@@ -24,7 +24,7 @@ import java.util.stream.Stream;
 import org.neo4j.kernel.api.query.ExecutingQuery;
 import org.neo4j.kernel.impl.api.KernelStatement;
 import org.neo4j.kernel.impl.query.clientconnection.ClientConnectionInfo;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 /**
  * Query execution monitoring operations.

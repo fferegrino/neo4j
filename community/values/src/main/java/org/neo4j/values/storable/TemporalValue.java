@@ -56,7 +56,6 @@ import org.neo4j.values.utils.InvalidValuesArgumentException;
 import org.neo4j.values.utils.TemporalArithmeticException;
 import org.neo4j.values.utils.TemporalParseException;
 import org.neo4j.values.utils.UnsupportedTemporalUnitException;
-import org.neo4j.values.virtual.MapValue;
 
 import static org.neo4j.values.storable.DateTimeValue.datetime;
 import static org.neo4j.values.storable.DateTimeValue.parseZoneName;

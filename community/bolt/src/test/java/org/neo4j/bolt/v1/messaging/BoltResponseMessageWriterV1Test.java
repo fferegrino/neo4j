@@ -33,7 +33,7 @@ import org.neo4j.bolt.v1.packstream.PackOutput;
 import org.neo4j.kernel.api.exceptions.Status;
 import org.neo4j.kernel.impl.logging.NullLogService;
 import org.neo4j.values.AnyValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -47,7 +47,7 @@ import static org.neo4j.values.storable.DateValue.date;
 import static org.neo4j.values.storable.Values.intValue;
 import static org.neo4j.values.storable.Values.longValue;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.map;
+import static org.neo4j.values.storable.Values.map;
 
 public class BoltResponseMessageWriterV1Test
 {

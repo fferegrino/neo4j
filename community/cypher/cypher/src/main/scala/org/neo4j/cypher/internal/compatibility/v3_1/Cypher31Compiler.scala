@@ -42,7 +42,7 @@ import org.neo4j.kernel.impl.query.{QueryExecutionMonitor, TransactionalContext}
 import org.neo4j.kernel.monitoring.{Monitors => KernelMonitors}
 import org.neo4j.logging.Log
 import org.neo4j.values.AnyValue
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 import org.opencypher.v9_0.{frontend => v3_5}
 
 import scala.collection.mutable

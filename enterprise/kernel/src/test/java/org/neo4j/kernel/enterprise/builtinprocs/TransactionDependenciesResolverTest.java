@@ -42,7 +42,7 @@ import org.neo4j.resources.CpuClock;
 import org.neo4j.resources.HeapAllocation;
 import org.neo4j.storageengine.api.lock.ResourceType;
 import org.neo4j.time.Clocks;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.Values;
 
 import static java.util.Collections.singletonList;
 import static org.hamcrest.Matchers.isEmptyString;
@@ -166,7 +166,7 @@ public class TransactionDependenciesResolverTest
     private ExecutingQuery createExecutingQuery( long queryId )
     {
         return new ExecutingQuery( queryId, ClientConnectionInfo.EMBEDDED_CONNECTION, "test", "testQuey",
-                VirtualValues.EMPTY_MAP, Collections.emptyMap(), () -> 1L, PageCursorTracer.NULL,
+                Values.EMPTY_MAP, Collections.emptyMap(), () -> 1L, PageCursorTracer.NULL,
                 Thread.currentThread().getId(), Thread.currentThread().getName(),
                 Clocks.nanoClock(), CpuClock.NOT_AVAILABLE, HeapAllocation.NOT_AVAILABLE );
     }

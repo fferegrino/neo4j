@@ -20,8 +20,8 @@
 package org.neo4j.cypher.internal.runtime.interpreted
 
 import org.neo4j.values.AnyValue
-import org.neo4j.values.storable.{ArrayValue, Values}
-import org.neo4j.values.virtual.{ListValue, MapValue, VirtualValues}
+import org.neo4j.values.storable.{ArrayValue, MapValue, Values}
+import org.neo4j.values.virtual.{ListValue, VirtualValues}
 
 import scala.collection.Seq
 

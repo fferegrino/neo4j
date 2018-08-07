@@ -24,8 +24,8 @@ import org.neo4j.cypher.internal.runtime.interpreted.pipes.CommunityExecutionCon
 import org.opencypher.v9_0.util.test_helpers.CypherFunSuite
 import org.opencypher.v9_0.expressions.SemanticDirection
 import org.neo4j.graphdb.{Relationship, RelationshipType}
-import org.neo4j.values.storable.Values.{stringArray, stringValue}
-import org.neo4j.values.virtual.VirtualValues.{EMPTY_MAP, relationshipValue, nodeValue}
+import org.neo4j.values.storable.Values.{EMPTY_MAP, stringArray, stringValue}
+import org.neo4j.values.virtual.VirtualValues.{relationshipValue, nodeValue}
 
 class HistoryTest extends CypherFunSuite {
 

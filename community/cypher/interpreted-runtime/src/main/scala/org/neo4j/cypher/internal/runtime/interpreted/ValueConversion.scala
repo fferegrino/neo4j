@@ -31,7 +31,7 @@ import org.neo4j.values.AnyValue
 import org.neo4j.values.storable.Values.byteArray
 import org.neo4j.values.storable._
 import org.neo4j.values.virtual.VirtualValues.fromArray
-import org.neo4j.values.virtual.{MapValue, MapValueBuilder, VirtualValues}
+import org.neo4j.values.virtual.VirtualValues
 
 object ValueConversion {
   def getValueConverter(cType: CypherType): Any => AnyValue = {

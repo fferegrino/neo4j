@@ -62,9 +62,9 @@ import org.neo4j.kernel.impl.logging.NullLogService;
 import org.neo4j.kernel.impl.util.ValueUtils;
 import org.neo4j.logging.Log;
 import org.neo4j.values.AnyValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.PathValue;
-import org.neo4j.values.virtual.VirtualValues;
 
 import static io.netty.buffer.ByteBufUtil.hexDump;
 import static org.hamcrest.Matchers.containsString;
@@ -84,7 +84,7 @@ import static org.neo4j.bolt.v1.messaging.example.Nodes.ALICE;
 import static org.neo4j.bolt.v1.messaging.example.Paths.ALL_PATHS;
 import static org.neo4j.bolt.v1.messaging.util.MessageMatchers.serialize;
 import static org.neo4j.values.storable.Values.durationValue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 @RunWith( Parameterized.class )
 public class MessageDecoderTest
@@ -411,7 +411,7 @@ public class MessageDecoderTest
             throws Exception
     {
         String statement = "RETURN $x";
-        MapValue parameters = VirtualValues.map(  new String[]{"x"}, new AnyValue[]{parameterValue } );
+        MapValue parameters = Values.map(  new String[]{"x"}, new AnyValue[]{parameterValue } );
 
         BoltStateMachine stateMachine = mock( BoltStateMachine.class );
         SynchronousBoltConnection connection = new SynchronousBoltConnection( stateMachine );

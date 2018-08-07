@@ -25,8 +25,8 @@ import org.neo4j.cypher.InternalException
 import org.neo4j.cypher.internal.runtime.{Operations, QueryContext}
 import org.neo4j.function.ThrowingBiConsumer
 import org.neo4j.values.AnyValue
-import org.neo4j.values.storable.Values
-import org.neo4j.values.virtual.{MapValue, VirtualNodeValue, VirtualRelationshipValue}
+import org.neo4j.values.storable.{MapValue, Values}
+import org.neo4j.values.virtual.{VirtualNodeValue, VirtualRelationshipValue}
 
 import scala.collection.immutable
 

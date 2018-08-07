@@ -25,7 +25,7 @@ import org.neo4j.cypher.internal.runtime.interpreted.ExecutionContext
 import org.neo4j.cypher.internal.runtime.interpreted.commands.convert.{CommunityExpressionConverter, ExpressionConverters}
 import org.neo4j.cypher.internal.runtime.interpreted.pipes.{NullPipeDecorator, QueryState}
 import org.opencypher.v9_0.expressions.Expression
-import org.neo4j.values.virtual.VirtualValues
+import org.neo4j.values.storable.Values
 
 import scala.collection.mutable
 
@@ -40,7 +40,7 @@ object simpleExpressionEvaluator extends ExpressionEvaluator {
       new QueryState(
         query = null,
         resources = null,
-        params = VirtualValues.EMPTY_MAP,
+        params = Values.EMPTY_MAP,
         decorator = NullPipeDecorator,
         triadicState = mutable.Map.empty,
         repeatableReads = mutable.Map.empty)

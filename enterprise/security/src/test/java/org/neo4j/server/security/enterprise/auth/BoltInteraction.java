@@ -63,7 +63,7 @@ import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.TextValue;
 import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.ListValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;

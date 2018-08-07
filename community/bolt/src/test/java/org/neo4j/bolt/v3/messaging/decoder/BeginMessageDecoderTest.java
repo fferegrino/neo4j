@@ -25,13 +25,13 @@ import org.neo4j.bolt.messaging.RequestMessageDecoder;
 import org.neo4j.bolt.runtime.BoltResponseHandler;
 import org.neo4j.bolt.v3.messaging.request.BeginMessage;
 import org.neo4j.values.AnyValue;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.Values;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.neo4j.bolt.v3.messaging.decoder.HelloMessageDecoderTest.assertOriginalMessageEqualsToDecoded;
 import static org.neo4j.values.storable.Values.longValue;
-import static org.neo4j.values.virtual.MapValue.EMPTY;
+import static org.neo4j.values.storable.MapValue.EMPTY;
 
 class BeginMessageDecoderTest
 {
@@ -54,7 +54,7 @@ class BeginMessageDecoderTest
     void shouldDecodeBeginMessage() throws Exception
     {
         BeginMessage originalMessage =
-                new BeginMessage( VirtualValues.map( new String[]{"tx_metadata", "tx_timeout"}, new AnyValue[]{EMPTY, longValue( 10000 )} ) );
+                new BeginMessage( Values.map( new String[]{"tx_metadata", "tx_timeout"}, new AnyValue[]{EMPTY, longValue( 10000 )} ) );
         assertOriginalMessageEqualsToDecoded( originalMessage, decoder );
     }
 }

@@ -47,7 +47,7 @@ import org.neo4j.kernel.impl.query.clientconnection.ClientConnectionInfo
 import org.neo4j.kernel.impl.query.{Neo4jTransactionalContext, Neo4jTransactionalContextFactory}
 import org.neo4j.storageengine.api.StorageReader
 import org.neo4j.test.TestGraphDatabaseFactory
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.Values.EMPTY_MAP
 import org.opencypher.v9_0.expressions.SemanticDirection
 import org.opencypher.v9_0.util.test_helpers.CypherFunSuite
 

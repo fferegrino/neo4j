@@ -44,7 +44,7 @@ import static org.neo4j.server.security.enterprise.auth.plugin.api.PredefinedRol
 import static org.neo4j.server.security.enterprise.auth.plugin.api.PredefinedRoles.EDITOR;
 import static org.neo4j.server.security.enterprise.auth.plugin.api.PredefinedRoles.PUBLISHER;
 import static org.neo4j.server.security.enterprise.auth.plugin.api.PredefinedRoles.READER;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public abstract class ConfiguredAuthScenariosInteractionTestBase<S> extends ProcedureInteractionTestBase<S>
 {

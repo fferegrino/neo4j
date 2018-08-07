@@ -49,8 +49,8 @@ import org.neo4j.kernel.impl.util.ValueUtils;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.LongValue;
 import org.neo4j.values.storable.TextValue;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -73,7 +73,7 @@ import static org.neo4j.values.storable.Values.stringValue;
 @SuppressWarnings( "unchecked" )
 public class BoltConnectionIT
 {
-    private static final MapValue EMPTY_PARAMS = VirtualValues.EMPTY_MAP;
+    private static final MapValue EMPTY_PARAMS = Values.EMPTY_MAP;
     private static final String USER_AGENT = "BoltConnectionIT/0.0";
     private static final BoltChannel boltChannel = mock( BoltChannel.class );
     @Rule

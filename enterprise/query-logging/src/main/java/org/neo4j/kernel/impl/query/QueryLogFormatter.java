@@ -30,7 +30,7 @@ import org.neo4j.helpers.Strings;
 import org.neo4j.kernel.api.query.QuerySnapshot;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.utils.PrettyPrinter;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 class QueryLogFormatter
 {

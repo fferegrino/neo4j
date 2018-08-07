@@ -21,7 +21,7 @@ package org.neo4j.cypher.internal.compatibility.v3_5.runtime.executionplan
 
 import org.neo4j.cypher.internal.compatibility.v3_5.runtime.RuntimeName
 import org.neo4j.cypher.internal.runtime.{ExecutionMode, InternalExecutionResult, QueryContext}
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 
 abstract class ExecutionPlan {
   def run(queryContext: QueryContext, planType: ExecutionMode, params: MapValue): InternalExecutionResult

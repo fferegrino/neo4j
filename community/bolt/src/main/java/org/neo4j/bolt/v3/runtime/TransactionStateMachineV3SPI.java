@@ -29,7 +29,7 @@ import org.neo4j.cypher.internal.javacompat.QueryResultProvider;
 import org.neo4j.kernel.AvailabilityGuard;
 import org.neo4j.kernel.impl.query.TransactionalContext;
 import org.neo4j.kernel.internal.GraphDatabaseAPI;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public class TransactionStateMachineV3SPI extends TransactionStateMachineV1SPI
 {

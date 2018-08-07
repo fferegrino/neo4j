@@ -35,7 +35,7 @@ import org.neo4j.kernel.api.exceptions.Status;
 import org.neo4j.kernel.impl.query.QueryExecutionKernelException;
 import org.neo4j.kernel.impl.util.ValueUtils;
 import org.neo4j.time.FakeClock;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;

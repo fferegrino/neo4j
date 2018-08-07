@@ -40,7 +40,7 @@ import org.neo4j.cypher.internal.runtime.planDescription.InternalPlanDescription
 import org.neo4j.cypher.internal.runtime.planDescription.{InternalPlanDescription, LogicalPlan2PlanDescription}
 import org.neo4j.cypher.internal.runtime.{ExecutionMode, InternalExecutionResult, QueryContext, compiled}
 import org.neo4j.cypher.internal.v3_5.logical.plans.{LogicalPlan, ProduceResult}
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 import org.opencypher.v9_0.ast.semantics.SemanticTable
 import org.opencypher.v9_0.frontend.PlannerName
 import org.opencypher.v9_0.util.attribution.Id

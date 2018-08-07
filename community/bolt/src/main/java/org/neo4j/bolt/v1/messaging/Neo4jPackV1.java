@@ -44,8 +44,8 @@ import org.neo4j.values.storable.TextArray;
 import org.neo4j.values.storable.TextValue;
 import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.ListValue;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.MapValueBuilder;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.MapValueBuilder;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.RelationshipValue;
 import org.neo4j.values.virtual.VirtualValues;
@@ -541,7 +541,7 @@ public class Neo4jPackV1 implements Neo4jPack
             int size = (int) unpackMapHeader();
             if ( size == 0 )
             {
-                return VirtualValues.EMPTY_MAP;
+                return Values.EMPTY_MAP;
             }
             MapValueBuilder map;
             if ( size == UNKNOWN_SIZE )

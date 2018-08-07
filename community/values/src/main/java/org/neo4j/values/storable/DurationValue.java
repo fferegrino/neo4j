@@ -22,7 +22,6 @@ package org.neo4j.values.storable;
 import java.lang.invoke.MethodHandle;
 import java.time.DateTimeException;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
@@ -42,7 +41,6 @@ import org.neo4j.values.ValueMapper;
 import org.neo4j.values.utils.InvalidValuesArgumentException;
 import org.neo4j.values.utils.TemporalArithmeticException;
 import org.neo4j.values.utils.UnsupportedTemporalUnitException;
-import org.neo4j.values.virtual.MapValue;
 
 import static java.lang.Double.parseDouble;
 import static java.lang.Long.parseLong;

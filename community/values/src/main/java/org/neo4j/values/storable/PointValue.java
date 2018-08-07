@@ -32,7 +32,6 @@ import org.neo4j.values.Comparison;
 import org.neo4j.values.ValueMapper;
 import org.neo4j.values.utils.InvalidValuesArgumentException;
 import org.neo4j.values.utils.PrettyPrinter;
-import org.neo4j.values.virtual.MapValue;
 
 import static java.lang.String.format;
 import static java.util.Collections.singletonList;

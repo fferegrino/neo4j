@@ -57,7 +57,7 @@ import org.neo4j.kernel.impl.logging.NullLogService;
 import org.neo4j.kernel.impl.util.BaseToObjectValueWriter;
 import org.neo4j.kernel.impl.util.HexPrinter;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.equalTo;

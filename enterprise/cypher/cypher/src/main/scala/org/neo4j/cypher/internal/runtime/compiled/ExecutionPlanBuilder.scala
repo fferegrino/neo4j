@@ -30,7 +30,7 @@ import org.neo4j.cypher.internal.runtime.compiled.ExecutionPlanBuilder.Descripti
 import org.neo4j.cypher.internal.runtime.planDescription.InternalPlanDescription
 import org.neo4j.cypher.internal.runtime.planDescription.InternalPlanDescription.Arguments
 import org.neo4j.cypher.internal.runtime.{ExecutionMode, InternalExecutionResult, ProfileMode, QueryContext}
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 import org.opencypher.v9_0.util.TaskCloser
 
 object ExecutionPlanBuilder {

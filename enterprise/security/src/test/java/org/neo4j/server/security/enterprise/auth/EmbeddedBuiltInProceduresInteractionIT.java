@@ -45,7 +45,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.neo4j.graphdb.security.AuthorizationViolationException.PERMISSION_DENIED;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public class EmbeddedBuiltInProceduresInteractionIT extends BuiltInProceduresInteractionTestBase<EnterpriseLoginContext>
 {

@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.neo4j.values.virtual;
+package org.neo4j.values.storable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +37,9 @@ import org.neo4j.values.AnyValue;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.ValueMapper;
 import org.neo4j.values.VirtualValue;
-import org.neo4j.values.storable.Values;
+import org.neo4j.values.virtual.ListValue;
+import org.neo4j.values.virtual.VirtualValueGroup;
+import org.neo4j.values.virtual.VirtualValues;
 
 import static org.neo4j.values.storable.Values.NO_VALUE;
 

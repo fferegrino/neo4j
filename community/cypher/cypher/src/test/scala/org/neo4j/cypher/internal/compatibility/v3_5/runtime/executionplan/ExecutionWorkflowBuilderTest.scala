@@ -29,8 +29,8 @@ import org.neo4j.cypher.internal.runtime.interpreted.pipes.Pipe
 import org.neo4j.cypher.internal.runtime._
 import org.opencypher.v9_0.util.test_helpers.CypherFunSuite
 import org.neo4j.cypher.internal.v3_5.logical.plans.Argument
-import org.neo4j.values.virtual.MapValue
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.MapValue
+import org.neo4j.values.storable.Values.EMPTY_MAP
 
 class ExecutionWorkflowBuilderTest extends CypherFunSuite with LogicalPlanConstructionTestSupport {
 

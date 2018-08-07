@@ -26,8 +26,8 @@ import java.util.Objects;
 import org.neo4j.bolt.messaging.BoltIOException;
 import org.neo4j.bolt.messaging.RequestMessage;
 import org.neo4j.bolt.v1.runtime.bookmarking.Bookmark;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 
 import static java.util.Objects.requireNonNull;
 import static org.neo4j.bolt.v3.messaging.request.MessageMetadataParser.parseTransactionMetadata;
@@ -47,12 +47,12 @@ public class RunMessage implements RequestMessage
 
     public RunMessage( String statement ) throws BoltIOException
     {
-        this( statement, VirtualValues.EMPTY_MAP );
+        this( statement, Values.EMPTY_MAP );
     }
 
     public RunMessage( String statement, MapValue params ) throws BoltIOException
     {
-        this( statement, params, VirtualValues.EMPTY_MAP );
+        this( statement, params, Values.EMPTY_MAP );
     }
 
     public RunMessage( String statement, MapValue params, MapValue meta ) throws BoltIOException

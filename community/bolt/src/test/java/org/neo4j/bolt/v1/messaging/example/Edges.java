@@ -31,7 +31,7 @@ import static org.neo4j.bolt.v1.messaging.example.Support.NO_PROPERTIES;
 import static org.neo4j.values.storable.Values.longValue;
 import static org.neo4j.values.storable.Values.stringValue;
 import static org.neo4j.values.virtual.VirtualValues.relationshipValue;
-import static org.neo4j.values.virtual.VirtualValues.map;
+import static org.neo4j.values.storable.Values.map;
 
 public class Edges
 {

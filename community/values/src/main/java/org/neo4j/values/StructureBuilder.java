@@ -22,7 +22,7 @@ package org.neo4j.values;
 import java.util.Map;
 
 import org.neo4j.values.utils.InvalidValuesArgumentException;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public interface StructureBuilder<Input, Result>
 {

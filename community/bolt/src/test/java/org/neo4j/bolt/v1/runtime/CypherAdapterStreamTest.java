@@ -38,8 +38,8 @@ import org.neo4j.graphdb.impl.notification.NotificationCode;
 import org.neo4j.kernel.impl.query.TransactionalContext;
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.DoubleValue;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.MapValueBuilder;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.MapValueBuilder;
 import org.neo4j.values.virtual.VirtualValues;
 
 import static java.util.Arrays.asList;

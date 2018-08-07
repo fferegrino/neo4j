@@ -25,7 +25,7 @@ import org.neo4j.cypher.internal.runtime.{Operations, QueryContext}
 import org.opencypher.v9_0.util.{CypherTypeException, InvalidArgumentException}
 import org.neo4j.function.ThrowingBiConsumer
 import org.neo4j.values.AnyValue
-import org.neo4j.values.storable.Values
+import org.neo4j.values.storable.{MapValue, Values}
 import org.neo4j.values.virtual._
 
 import scala.collection.Map

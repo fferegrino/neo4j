@@ -29,7 +29,7 @@ import org.neo4j.bolt.messaging.RequestMessageDecoder;
 import org.neo4j.bolt.runtime.BoltResponseHandler;
 import org.neo4j.bolt.v1.messaging.decoder.PrimitiveOnlyValueWriter;
 import org.neo4j.bolt.v3.messaging.request.HelloMessage;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public class HelloMessageDecoder implements RequestMessageDecoder
 {

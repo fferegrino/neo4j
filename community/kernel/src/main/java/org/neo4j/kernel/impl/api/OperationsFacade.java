@@ -26,7 +26,7 @@ import org.neo4j.kernel.api.QueryRegistryOperations;
 import org.neo4j.kernel.api.query.ExecutingQuery;
 import org.neo4j.kernel.impl.api.operations.QueryRegistrationOperations;
 import org.neo4j.kernel.impl.query.clientconnection.ClientConnectionInfo;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public class OperationsFacade implements QueryRegistryOperations
 {

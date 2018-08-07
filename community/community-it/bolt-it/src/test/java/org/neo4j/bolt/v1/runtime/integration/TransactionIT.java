@@ -67,7 +67,7 @@ import static org.neo4j.bolt.testing.BoltMatchers.succeededWithMetadata;
 import static org.neo4j.bolt.testing.BoltMatchers.succeededWithRecord;
 import static org.neo4j.bolt.testing.BoltMatchers.wasIgnored;
 import static org.neo4j.bolt.testing.NullResponseHandler.nullResponseHandler;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 
 public class TransactionIT

@@ -32,7 +32,7 @@ import org.opencypher.v9_0.expressions._
 import org.neo4j.cypher.internal.v3_5.logical.plans._
 import org.neo4j.internal.kernel.api.Procedures
 import org.neo4j.values.storable.LongValue
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.Values.EMPTY_MAP
 
 class ProcedureCallExecutionPlanTest extends CypherFunSuite {
 

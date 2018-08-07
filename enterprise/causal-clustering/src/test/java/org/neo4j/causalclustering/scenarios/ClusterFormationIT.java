@@ -44,7 +44,7 @@ import org.neo4j.test.causalclustering.ClusterRule;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public class ClusterFormationIT
 {

@@ -24,8 +24,10 @@ import java.util.List;
 
 import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.ArrayValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.storable.TextArray;
 import org.neo4j.values.storable.TextValue;
+import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.PathValue.DirectPathValue;
 
 /**
@@ -34,7 +36,6 @@ import org.neo4j.values.virtual.PathValue.DirectPathValue;
 @SuppressWarnings( "WeakerAccess" )
 public final class VirtualValues
 {
-    public static final MapValue EMPTY_MAP = MapValue.EMPTY;
     public static final ListValue EMPTY_LIST = new ListValue.ArrayListValue( new AnyValue[0] );
 
     private VirtualValues()
@@ -78,22 +79,6 @@ public final class VirtualValues
     public static ListValue concat( ListValue... lists )
     {
         return new ListValue.ConcatList( lists );
-    }
-
-    public static MapValue emptyMap()
-    {
-        return EMPTY_MAP;
-    }
-
-    public static MapValue map( String[] keys, AnyValue[] values )
-    {
-        assert keys.length == values.length;
-        HashMap<String,AnyValue> map = new HashMap<>( keys.length );
-        for ( int i = 0; i < keys.length; i++ )
-        {
-            map.put( keys[i], values[i] );
-        }
-        return new MapValue.MapWrappingMapValue( map );
     }
 
     public static ErrorValue error( Exception e )

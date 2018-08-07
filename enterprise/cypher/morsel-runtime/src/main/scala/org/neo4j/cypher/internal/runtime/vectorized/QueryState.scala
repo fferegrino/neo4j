@@ -23,10 +23,11 @@
 package org.neo4j.cypher.internal.runtime.vectorized
 
 import org.neo4j.cypher.result.QueryResult.QueryResultVisitor
-import org.neo4j.values.virtual.{MapValue, VirtualValues}
+import org.neo4j.values.storable.MapValue
+import org.neo4j.values.storable.Values
 
 object QueryState {
-  val EMPTY = QueryState(VirtualValues.EMPTY_MAP, null, 10000, singeThreaded = true)
+  val EMPTY = QueryState(Values.EMPTY_MAP, null, 10000, singeThreaded = true)
 }
 
 /**

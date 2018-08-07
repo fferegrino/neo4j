@@ -30,7 +30,7 @@ import org.neo4j.graphdb.Node
 import org.neo4j.internal.kernel.api.Transaction.Type
 import org.neo4j.internal.kernel.api.security.LoginContext
 import org.neo4j.kernel.impl.util.ValueUtils._
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.Values.EMPTY_MAP
 import org.neo4j.values.virtual.{NodeValue, RelationshipValue}
 import org.opencypher.v9_0.expressions.SemanticDirection
 

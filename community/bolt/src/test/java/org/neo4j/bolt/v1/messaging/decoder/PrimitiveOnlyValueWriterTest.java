@@ -46,7 +46,7 @@ import static org.neo4j.values.storable.Values.longValue;
 import static org.neo4j.values.storable.Values.pointValue;
 import static org.neo4j.values.storable.Values.stringArray;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 import static org.neo4j.values.virtual.VirtualValues.nodeValue;
 import static org.neo4j.values.virtual.VirtualValues.relationshipValue;
 

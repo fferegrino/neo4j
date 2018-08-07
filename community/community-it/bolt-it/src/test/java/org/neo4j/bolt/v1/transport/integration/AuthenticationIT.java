@@ -56,8 +56,8 @@ import org.neo4j.logging.AssertableLogProvider;
 import org.neo4j.test.TestGraphDatabaseFactory;
 import org.neo4j.test.rule.fs.EphemeralFileSystemRule;
 import org.neo4j.values.AnyValue;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 
 import static java.util.Collections.singletonList;
 import static java.util.concurrent.TimeUnit.SECONDS;
@@ -71,7 +71,7 @@ import static org.neo4j.bolt.v1.messaging.util.MessageMatchers.msgIgnored;
 import static org.neo4j.bolt.v1.messaging.util.MessageMatchers.msgSuccess;
 import static org.neo4j.bolt.v1.transport.integration.TransportTestUtil.eventuallyDisconnects;
 import static org.neo4j.helpers.collection.MapUtil.map;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public class AuthenticationIT extends AbstractBoltTransportsTest
 {
@@ -573,7 +573,7 @@ public class AuthenticationIT extends AbstractBoltTransportsTest
 
     private MapValue singletonMap( String key, Object value )
     {
-        return VirtualValues.map( new String[]{key}, new AnyValue[]{ValueUtils.of( value )}  );
+        return Values.map( new String[]{key}, new AnyValue[]{ValueUtils.of( value )}  );
     }
 
     private FailureMessage collectAuthFailureOnFailedAuth()

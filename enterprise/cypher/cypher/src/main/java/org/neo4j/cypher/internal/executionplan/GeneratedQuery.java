@@ -27,7 +27,7 @@ import org.neo4j.cypher.internal.runtime.ExecutionMode;
 import org.neo4j.cypher.internal.runtime.QueryContext;
 import org.neo4j.cypher.internal.runtime.planDescription.InternalPlanDescription;
 import org.neo4j.cypher.internal.codegen.QueryExecutionTracer;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 public interface GeneratedQuery
 {

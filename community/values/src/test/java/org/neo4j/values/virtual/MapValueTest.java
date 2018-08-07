@@ -25,13 +25,14 @@ import java.util.Arrays;
 
 import org.neo4j.helpers.collection.Iterables;
 import org.neo4j.values.AnyValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
-import static org.neo4j.values.virtual.VirtualValues.map;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.map;
 
 class MapValueTest
 {

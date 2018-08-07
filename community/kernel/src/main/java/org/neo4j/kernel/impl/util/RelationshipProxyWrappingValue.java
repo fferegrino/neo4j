@@ -26,10 +26,9 @@ import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.storable.TextValue;
 import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.RelationshipValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.VirtualNodeValue;
-import org.neo4j.values.virtual.VirtualValues;
 
 public class RelationshipProxyWrappingValue extends RelationshipValue
 {
@@ -60,7 +59,7 @@ public class RelationshipProxyWrappingValue extends RelationshipValue
         }
         catch ( NotFoundException e )
         {
-            p = VirtualValues.EMPTY_MAP;
+            p = Values.EMPTY_MAP;
 
         }
 

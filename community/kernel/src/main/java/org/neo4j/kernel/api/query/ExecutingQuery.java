@@ -36,7 +36,7 @@ import org.neo4j.resources.CpuClock;
 import org.neo4j.resources.HeapAllocation;
 import org.neo4j.storageengine.api.lock.ResourceType;
 import org.neo4j.time.SystemNanoClock;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static java.util.concurrent.TimeUnit.NANOSECONDS;
 import static java.util.concurrent.atomic.AtomicLongFieldUpdater.newUpdater;

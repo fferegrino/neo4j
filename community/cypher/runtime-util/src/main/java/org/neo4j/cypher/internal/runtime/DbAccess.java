@@ -21,7 +21,7 @@ package org.neo4j.cypher.internal.runtime;
 
 import org.neo4j.values.storable.Value;
 import org.neo4j.values.virtual.ListValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.RelationshipValue;
 

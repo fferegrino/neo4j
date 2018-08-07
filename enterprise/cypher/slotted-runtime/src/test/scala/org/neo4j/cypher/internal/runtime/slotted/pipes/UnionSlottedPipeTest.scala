@@ -33,7 +33,7 @@ import org.opencypher.v9_0.util.test_helpers.CypherFunSuite
 import org.neo4j.graphdb.{Node, Relationship}
 import org.neo4j.kernel.impl.util.ValueUtils.{fromNodeProxy, fromRelationshipProxy}
 import org.neo4j.values.storable.Values.{longValue, stringArray, stringValue}
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.Values.EMPTY_MAP
 import org.neo4j.values.virtual.{NodeValue, RelationshipValue, VirtualValues}
 
 import scala.collection.immutable

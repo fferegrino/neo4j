@@ -34,7 +34,7 @@ import org.neo4j.kernel.GraphDatabaseQueryService
 import org.neo4j.kernel.impl.query.{QueryExecution, ResultBuffer, TransactionalContext}
 import org.neo4j.kernel.monitoring.Monitors
 import org.neo4j.logging.LogProvider
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 
 trait StringCacheMonitor extends CypherCacheMonitor[Pair[String, ParameterTypeMap]]
 

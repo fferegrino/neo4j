@@ -23,7 +23,7 @@ import org.neo4j.cypher.internal.planner.v3_5.spi.TokenContext
 import org.neo4j.cypher.internal.v3_5.logical.plans.LogicalPlan
 import org.neo4j.internal.kernel.api.Transaction
 import org.neo4j.kernel.impl.query.{QueryExecution, ResultBuffer}
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 import org.opencypher.v9_0.ast.semantics.SemanticTable
 import org.opencypher.v9_0.expressions.Expression
 import org.opencypher.v9_0.util.symbols.CypherType

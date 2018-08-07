@@ -24,7 +24,8 @@ import org.neo4j.cypher.internal.runtime.interpreted.commands.expressions.{Aggre
 import org.neo4j.cypher.internal.runtime.interpreted.pipes.aggregation.AggregationFunction
 import org.opencypher.v9_0.util.attribution.Id
 import org.neo4j.values.AnyValue
-import org.neo4j.values.virtual.{ListValue, MapValue, VirtualValues}
+import org.neo4j.values.storable.MapValue
+import org.neo4j.values.virtual.{ListValue, VirtualValues}
 
 import scala.collection.immutable
 import scala.collection.mutable.{Map => MutableMap}

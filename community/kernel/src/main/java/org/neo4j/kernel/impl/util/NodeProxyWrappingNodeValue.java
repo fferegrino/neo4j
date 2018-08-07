@@ -27,9 +27,8 @@ import org.neo4j.graphdb.NotFoundException;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.storable.TextArray;
 import org.neo4j.values.storable.Values;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeValue;
-import org.neo4j.values.virtual.VirtualValues;
 
 public class NodeProxyWrappingNodeValue extends NodeValue
 {
@@ -61,7 +60,7 @@ public class NodeProxyWrappingNodeValue extends NodeValue
         catch ( NotFoundException e )
         {
             l = Values.stringArray();
-            p = VirtualValues.EMPTY_MAP;
+            p = Values.EMPTY_MAP;
 
         }
 

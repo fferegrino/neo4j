@@ -38,7 +38,6 @@ import org.neo4j.values.StructureBuilder;
 import org.neo4j.values.ValueMapper;
 import org.neo4j.values.utils.InvalidValuesArgumentException;
 import org.neo4j.values.utils.UnsupportedTemporalUnitException;
-import org.neo4j.values.virtual.MapValue;
 
 import static java.lang.Integer.parseInt;
 import static java.util.Objects.requireNonNull;

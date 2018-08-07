@@ -23,7 +23,7 @@ import org.neo4j.function.ThrowingBiConsumer
 import org.neo4j.kernel.impl.util.{NodeProxyWrappingNodeValue, PathWrappingPathValue, RelationshipProxyWrappingValue}
 import org.neo4j.values.AnyValue
 import org.neo4j.values.storable._
-import org.neo4j.values.virtual.{ListValue, MapValue}
+import org.neo4j.values.virtual.ListValue
 
 import scala.collection.mutable
 

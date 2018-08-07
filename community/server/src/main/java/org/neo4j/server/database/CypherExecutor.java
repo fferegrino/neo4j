@@ -19,7 +19,6 @@
  */
 package org.neo4j.server.database;
 
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletRequest;
 
@@ -38,7 +37,7 @@ import org.neo4j.kernel.lifecycle.LifecycleAdapter;
 import org.neo4j.logging.Log;
 import org.neo4j.logging.LogProvider;
 import org.neo4j.server.rest.web.HttpConnectionInfoFactory;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.neo4j.internal.kernel.api.security.LoginContext.AUTH_DISABLED;
 import static org.neo4j.server.web.HttpHeaderUtils.getTransactionTimeout;

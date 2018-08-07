@@ -23,7 +23,7 @@ import org.neo4j.cypher.GraphDatabaseTestSupport
 import org.neo4j.cypher.internal.runtime.interpreted.pipes.{CommunityExecutionContextFactory, QueryState}
 import org.neo4j.internal.kernel.api.Transaction.Type
 import org.neo4j.internal.kernel.api.security.LoginContext.AUTH_DISABLED
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.Values.EMPTY_MAP
 
 trait QueryStateTestSupport {
   self: GraphDatabaseTestSupport =>

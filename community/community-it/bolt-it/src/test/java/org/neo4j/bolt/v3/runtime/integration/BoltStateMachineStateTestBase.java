@@ -27,15 +27,15 @@ import org.neo4j.bolt.v3.BoltProtocolV3;
 import org.neo4j.bolt.v3.BoltStateMachineV3;
 import org.neo4j.bolt.v3.messaging.request.HelloMessage;
 import org.neo4j.helpers.collection.MapUtil;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class BoltStateMachineStateTestBase
 {
-    protected static final MapValue EMPTY_PARAMS = VirtualValues.EMPTY_MAP;
+    protected static final MapValue EMPTY_PARAMS = Values.EMPTY_MAP;
     protected static final String USER_AGENT = "BoltConnectionIT/0.0";
     protected static final BoltChannel boltChannel = mock( BoltChannel.class );
 

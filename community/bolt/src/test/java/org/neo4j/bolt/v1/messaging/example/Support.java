@@ -25,15 +25,14 @@ import java.util.List;
 import org.neo4j.values.storable.TextArray;
 import org.neo4j.values.storable.Values;
 import org.neo4j.values.virtual.RelationshipValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 import org.neo4j.values.virtual.NodeValue;
 import org.neo4j.values.virtual.PathValue;
-import org.neo4j.values.virtual.VirtualValues;
 
 public class Support
 {
     static final TextArray NO_LABELS = Values.stringArray();
-    static final MapValue NO_PROPERTIES = VirtualValues.EMPTY_MAP;
+    static final MapValue NO_PROPERTIES = Values.EMPTY_MAP;
 
     private Support()
     {

@@ -26,7 +26,7 @@ import org.neo4j.cypher.internal.runtime.interpreted.commands.{ShortestPath, Sin
 import org.neo4j.graphdb.Node
 import org.neo4j.kernel.impl.util.ValueUtils.{fromNodeProxy, fromRelationshipProxy}
 import org.neo4j.values.virtual.PathValue
-import org.neo4j.values.virtual.VirtualValues.EMPTY_MAP
+import org.neo4j.values.storable.Values.EMPTY_MAP
 import org.opencypher.v9_0.expressions.SemanticDirection
 import org.opencypher.v9_0.util.symbols._
 

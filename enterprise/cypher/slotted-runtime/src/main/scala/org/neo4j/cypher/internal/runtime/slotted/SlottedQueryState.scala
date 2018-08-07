@@ -26,7 +26,7 @@ import org.neo4j.cypher.internal.runtime.interpreted.commands.predicates.{InChec
 import org.neo4j.cypher.internal.runtime.interpreted.pipes._
 import org.neo4j.cypher.internal.runtime.interpreted.{ExecutionContext, MutableMaps}
 import org.neo4j.values.AnyValue
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 
 import scala.collection.mutable
 

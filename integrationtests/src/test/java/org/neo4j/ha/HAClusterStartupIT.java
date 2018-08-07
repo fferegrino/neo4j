@@ -54,7 +54,7 @@ import static org.junit.Assert.assertTrue;
 import static org.neo4j.consistency.store.StoreAssertions.assertConsistentStore;
 import static org.neo4j.kernel.impl.ha.ClusterManager.allSeesAllAsAvailable;
 import static org.neo4j.kernel.impl.ha.ClusterManager.clusterOfSize;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 @RunWith( Enclosed.class )
 public class HAClusterStartupIT

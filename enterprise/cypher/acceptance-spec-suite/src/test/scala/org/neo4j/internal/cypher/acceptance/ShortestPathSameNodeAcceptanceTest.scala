@@ -30,7 +30,7 @@ import org.neo4j.graphdb.RelationshipType
 import org.neo4j.graphdb.factory.GraphDatabaseSettings
 import org.neo4j.internal.cypher.acceptance.CypherComparisonSupport.Versions.{V3_1, V3_4}
 import org.neo4j.internal.cypher.acceptance.CypherComparisonSupport._
-import org.neo4j.values.virtual.VirtualValues
+import org.neo4j.values.storable.Values
 
 class ShortestPathSameNodeAcceptanceTest extends ExecutionEngineFunSuite with RunWithConfigTestSupport with CypherComparisonSupport {
 
@@ -122,7 +122,7 @@ class ShortestPathSameNodeAcceptanceTest extends ExecutionEngineFunSuite with Ru
   def executeUsingCostPlannerOnly(db: GraphDatabaseCypherService, query: String): InternalExecutionResult = {
     val engine = ExecutionEngineHelper.createEngine(db)
     RewindableExecutionResult(engine.execute(query,
-                                             VirtualValues.emptyMap(),
+                                             Values.emptyMap(),
                                              engine.queryService.transactionalContext(query = query -> Map())))
   }
 }

@@ -40,7 +40,7 @@ import org.neo4j.kernel.api.KernelTransactionHandle;
 import org.neo4j.kernel.api.exceptions.Status;
 import org.neo4j.kernel.impl.api.KernelTransactions;
 import org.neo4j.kernel.internal.GraphDatabaseAPI;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.singletonList;
@@ -63,7 +63,7 @@ import static org.neo4j.helpers.collection.MapUtil.map;
 import static org.neo4j.kernel.impl.util.ValueUtils.asMapValue;
 import static org.neo4j.values.storable.Values.longValue;
 import static org.neo4j.values.storable.Values.stringValue;
-import static org.neo4j.values.virtual.VirtualValues.EMPTY_MAP;
+import static org.neo4j.values.storable.Values.EMPTY_MAP;
 
 public class BoltV3TransportIT extends BoltV3TransportBase
 {

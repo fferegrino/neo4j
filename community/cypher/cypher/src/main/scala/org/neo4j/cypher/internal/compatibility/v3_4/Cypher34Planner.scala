@@ -51,7 +51,7 @@ import org.neo4j.helpers.collection.Pair
 import org.neo4j.kernel.impl.query.TransactionalContext
 import org.neo4j.kernel.monitoring.{Monitors => KernelMonitors}
 import org.neo4j.logging.Log
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 import org.opencypher.v9_0.frontend.PlannerName
 import org.opencypher.v9_0.frontend.phases.{CompilationPhaseTracer, RecordingNotificationLogger => RecordingNotificationLoggerv3_5}
 import org.opencypher.v9_0.util.attribution.SequentialIdGen

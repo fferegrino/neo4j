@@ -40,7 +40,6 @@ import org.neo4j.values.ValueMapper;
 import org.neo4j.values.utils.InvalidValuesArgumentException;
 import org.neo4j.values.utils.TemporalUtil;
 import org.neo4j.values.utils.UnsupportedTemporalUnitException;
-import org.neo4j.values.virtual.MapValue;
 
 import static java.lang.Integer.parseInt;
 import static java.time.ZoneOffset.UTC;

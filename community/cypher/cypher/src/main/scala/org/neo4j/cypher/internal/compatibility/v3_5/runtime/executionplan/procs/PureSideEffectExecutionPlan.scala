@@ -27,7 +27,7 @@ import org.neo4j.cypher.internal.runtime._
 import org.neo4j.cypher.internal.runtime.interpreted.UpdateCountingQueryContext
 import org.neo4j.cypher.internal.runtime.planDescription.InternalPlanDescription.Arguments._
 import org.neo4j.cypher.internal.runtime.planDescription.{NoChildren, PlanDescriptionImpl}
-import org.neo4j.values.virtual.MapValue
+import org.neo4j.values.storable.MapValue
 import org.opencypher.v9_0.util.attribution.Id
 
 /**

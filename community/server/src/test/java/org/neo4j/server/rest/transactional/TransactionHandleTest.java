@@ -47,13 +47,12 @@ import org.neo4j.logging.LogProvider;
 import org.neo4j.logging.NullLogProvider;
 import org.neo4j.server.rest.transactional.error.Neo4jError;
 import org.neo4j.server.rest.web.TransactionUriScheme;
-import org.neo4j.values.virtual.MapValue;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.MapValue;
+import org.neo4j.values.storable.Values;
 
 import static java.util.Arrays.asList;
 import static org.mockito.ArgumentMatchers.anyCollection;
 import static org.mockito.ArgumentMatchers.anyCollectionOf;
-import static org.mockito.ArgumentMatchers.anyMap;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.isNull;
 import static org.mockito.Mockito.any;
@@ -77,7 +76,7 @@ import static org.neo4j.server.rest.transactional.StubStatementDeserializer.stat
 public class TransactionHandleTest
 {
 
-    static MapValue NO_PARAMS = VirtualValues.emptyMap();
+    static MapValue NO_PARAMS = Values.emptyMap();
 
     @Test
     public void shouldExecuteStatements() throws Exception

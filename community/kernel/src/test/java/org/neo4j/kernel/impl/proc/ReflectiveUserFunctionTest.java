@@ -44,7 +44,7 @@ import org.neo4j.logging.NullLog;
 import org.neo4j.procedure.Context;
 import org.neo4j.procedure.UserFunction;
 import org.neo4j.values.AnyValue;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;

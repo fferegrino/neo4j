@@ -29,7 +29,7 @@ import org.neo4j.kernel.impl.api.KernelStatement;
 import org.neo4j.kernel.impl.query.QueryExecutionKernelException;
 import org.neo4j.kernel.impl.query.TransactionalContext;
 import org.neo4j.logging.LogProvider;
-import org.neo4j.values.virtual.MapValue;
+import org.neo4j.values.storable.MapValue;
 
 /**
  * {@link ExecutionEngine} engine that will try to run cypher query with guarantee that query will never see any data

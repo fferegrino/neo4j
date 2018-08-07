@@ -70,7 +70,7 @@ import org.neo4j.resources.HeapAllocation;
 import org.neo4j.storageengine.api.StorageEngine;
 import org.neo4j.time.Clocks;
 import org.neo4j.time.SystemNanoClock;
-import org.neo4j.values.virtual.VirtualValues;
+import org.neo4j.values.storable.Values;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
@@ -188,7 +188,7 @@ public class TransactionStatusResultTest
 
     private ExecutingQuery createExecutingQuery( long queryId )
     {
-        return new ExecutingQuery( queryId, getTestConnectionInfo(), "testUser", "testQuery", VirtualValues.EMPTY_MAP,
+        return new ExecutingQuery( queryId, getTestConnectionInfo(), "testUser", "testQuery", Values.EMPTY_MAP,
                 Collections.emptyMap(), () -> 1L, PageCursorTracer.NULL,
                 Thread.currentThread().getId(), Thread.currentThread().getName(),
                 new CountingNanoClock(), new CountingCpuClock(), new CountingHeapAllocation() );
