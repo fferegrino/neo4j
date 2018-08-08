@@ -751,7 +751,25 @@ public abstract class MapValue extends Value
     @Override
     public String prettyPrint()
     {
-        return null;
+        if ( getContent() == MapValueContent.EMPTY || getContent() == MapValueContent.STORABLE )
+        {
+            StringBuilder sb = new StringBuilder("{");
+            final String[] sep = new String[]{""};
+            foreach ( (key, value) ->
+            {
+                sb.append( sep[0] );
+                sb.append( String.format( "'%s'", key ) ); // Single quotes to keep the consistency
+                sb.append( ":" );
+                sb.append( ( (Value)value ).prettyPrint() );
+                sep[0] = ", ";
+            } );
+            sb.append( '}' );
+            return sb.toString();
+        }
+        else
+        {
+            return toString();
+        }
     }
 
     @Override

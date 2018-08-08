@@ -56,6 +56,8 @@ import static org.neo4j.values.storable.LocalTimeValue.localTime;
 import static org.neo4j.values.storable.TimeValue.time;
 import static org.neo4j.values.storable.Values.byteValue;
 import static org.neo4j.values.storable.Values.intValue;
+import static org.neo4j.values.storable.Values.floatValue;
+import static org.neo4j.values.storable.Values.stringArray;
 import static org.neo4j.values.storable.Values.stringValue;
 import static org.neo4j.values.storable.Values.EMPTY_MAP;
 import static org.neo4j.values.virtual.VirtualValues.list;
@@ -80,8 +82,8 @@ class PrettyPrinterTest
     void shouldHandleNodeValue()
     {
         // Given
-        NodeValue node = VirtualValues.nodeValue( 42L, Values.stringArray( "L1", "L2", "L3" ),
-                props( "foo", intValue( 42 ), "bar", list( intValue( 1337 ), stringValue( "baz" ) ) ) );
+        NodeValue node = VirtualValues.nodeValue( 42L, stringArray( "L1", "L2", "L3" ),
+                mapValue( "foo", intValue( 42 ), "bar", list( intValue( 1337 ), stringValue( "baz" ) ) ) );
         PrettyPrinter printer = new PrettyPrinter();
 
         // When
@@ -95,8 +97,8 @@ class PrettyPrinterTest
     void shouldHandleNodeValueWithoutLabels()
     {
         // Given
-        NodeValue node = VirtualValues.nodeValue( 42L, Values.stringArray(),
-                props( "foo", intValue( 42 ), "bar", list( intValue( 1337 ), stringValue( "baz" ) ) ) );
+        NodeValue node = VirtualValues.nodeValue( 42L, stringArray(),
+                mapValue( "foo", intValue( 42 ), "bar", list( intValue( 1337 ), stringValue( "baz" ) ) ) );
         PrettyPrinter printer = new PrettyPrinter();
 
         // When
@@ -110,7 +112,7 @@ class PrettyPrinterTest
     void shouldHandleNodeValueWithoutProperties()
     {
         // Given
-        NodeValue node = VirtualValues.nodeValue( 42L, Values.stringArray( "L1", "L2", "L3" ), EMPTY_MAP );
+        NodeValue node = VirtualValues.nodeValue( 42L, stringArray( "L1", "L2", "L3" ), EMPTY_MAP );
         PrettyPrinter printer = new PrettyPrinter();
 
         // When
@@ -124,7 +126,7 @@ class PrettyPrinterTest
     void shouldHandleNodeValueWithoutLabelsNorProperties()
     {
         // Given
-        NodeValue node = VirtualValues.nodeValue( 42L, Values.stringArray(), EMPTY_MAP );
+        NodeValue node = VirtualValues.nodeValue( 42L, stringArray(), EMPTY_MAP );
         PrettyPrinter printer = new PrettyPrinter();
 
         // When
@@ -152,10 +154,10 @@ class PrettyPrinterTest
     void shouldHandleEdgeValue()
     {
         // Given
-        NodeValue startNode = VirtualValues.nodeValue( 1L, Values.stringArray( "L" ), EMPTY_MAP );
-        NodeValue endNode = VirtualValues.nodeValue( 2L, Values.stringArray( "L" ), EMPTY_MAP );
+        NodeValue startNode = VirtualValues.nodeValue( 1L, stringArray( "L" ), EMPTY_MAP );
+        NodeValue endNode = VirtualValues.nodeValue( 2L, stringArray( "L" ), EMPTY_MAP );
         RelationshipValue rel = VirtualValues.relationshipValue( 42L, startNode, endNode, stringValue( "R" ),
-                props( "foo", intValue( 42 ), "bar", list( intValue( 1337 ), stringValue( "baz" ) ) ) );
+                mapValue( "foo", intValue( 42 ), "bar", list( intValue( 1337 ), stringValue( "baz" ) ) ) );
         PrettyPrinter printer = new PrettyPrinter();
 
         // When
@@ -168,8 +170,8 @@ class PrettyPrinterTest
     @Test
     void shouldHandleEdgeValueWithoutProperties()
     {
-        NodeValue startNode = VirtualValues.nodeValue( 1L, Values.stringArray( "L" ), EMPTY_MAP );
-        NodeValue endNode = VirtualValues.nodeValue( 2L, Values.stringArray( "L" ), EMPTY_MAP );
+        NodeValue startNode = VirtualValues.nodeValue( 1L, stringArray( "L" ), EMPTY_MAP );
+        NodeValue endNode = VirtualValues.nodeValue( 2L, stringArray( "L" ), EMPTY_MAP );
         RelationshipValue rel =
                 VirtualValues.relationshipValue( 42L, startNode, endNode, stringValue( "R" ), EMPTY_MAP );
         PrettyPrinter printer = new PrettyPrinter();
@@ -185,7 +187,7 @@ class PrettyPrinterTest
     void shouldHandleEdgeValueWithoutLabelsNorProperties()
     {
         // Given
-        NodeValue node = VirtualValues.nodeValue( 42L, Values.stringArray(), EMPTY_MAP );
+        NodeValue node = VirtualValues.nodeValue( 42L, stringArray(), EMPTY_MAP );
         PrettyPrinter printer = new PrettyPrinter();
 
         // When
@@ -199,8 +201,8 @@ class PrettyPrinterTest
     void shouldHandlePaths()
     {
         // Given
-        NodeValue startNode = VirtualValues.nodeValue( 1L, Values.stringArray( "L" ), EMPTY_MAP );
-        NodeValue endNode = VirtualValues.nodeValue( 2L, Values.stringArray( "L" ), EMPTY_MAP );
+        NodeValue startNode = VirtualValues.nodeValue( 1L, stringArray( "L" ), EMPTY_MAP );
+        NodeValue endNode = VirtualValues.nodeValue( 2L, stringArray( "L" ), EMPTY_MAP );
         RelationshipValue rel =
                 VirtualValues.relationshipValue( 42L, startNode, endNode, stringValue( "R" ), EMPTY_MAP );
         PathValue path = VirtualValues.path( new NodeValue[]{startNode, endNode}, new RelationshipValue[]{rel} );
@@ -218,7 +220,7 @@ class PrettyPrinterTest
     {
         // Given
         PrettyPrinter printer = new PrettyPrinter();
-        MapValue mapValue = props( "k1", intValue( 42 ) );
+        MapValue mapValue = mapValue( "k1", intValue( 42 ) );
 
         // When
         mapValue.writeTo( printer );
@@ -246,7 +248,7 @@ class PrettyPrinterTest
     {
         // Given
         PrettyPrinter printer = new PrettyPrinter();
-        TextArray array = Values.stringArray( "a", "b", "c" );
+        TextArray array = stringArray( "a", "b", "c" );
 
         // When
         array.writeTo( printer );
@@ -404,8 +406,76 @@ class PrettyPrinterTest
         assertEquals( "{datetime: \"1988-04-19T10:12:59.112233445+03:15\"}", printer.value() );
     }
 
-    private MapValue props( Object... keyValue )
+    @Test
+    void shouldPrettyPrintEmptyMapCorrectly()
     {
+        MapValue emptyMap = mapValue();
+        PrettyPrinter printer = new PrettyPrinter();
+
+        emptyMap.writeTo( printer );
+
+        String actual = printer.value();
+
+        assertEquals( "{}", actual );
+    }
+
+    @Test
+    void shouldPrettyPrintMapMultipleValues()
+    {
+        MapValue emptyMap = mapValue("k1", intValue(1), "k2", floatValue(1));
+        PrettyPrinter printer = new PrettyPrinter();
+
+        emptyMap.writeTo( printer );
+
+        String actual = printer.value();
+        assertEquals("{k1: 1, k2: 1.0}", actual);
+    }
+
+    @Test
+    void shouldPrettyPrintMapWithStrings()
+    {
+        MapValue stringMaps = mapValue("key1", stringValue("neo4j is cool"), "key2", stringValue("yes it is"));
+        PrettyPrinter printer = new PrettyPrinter();
+
+        stringMaps.writeTo( printer );
+
+        String actual = printer.value();
+        assertEquals("{key1: \"neo4j is cool\", key2: \"yes it is\"}", actual);
+    }
+
+    @Test
+    void shouldPrettyPrintMapWithArrays()
+    {
+        MapValue stringArray = mapValue("key1", stringArray("neo4j", "OrientDB", "JanusGraph"), "key2", stringValue("yes it is"));
+        PrettyPrinter printer = new PrettyPrinter();
+        // TODO: Check StringArray prettyPrint implementation
+
+        stringArray.writeTo( printer );
+
+        String actual = printer.value();
+        assertEquals("{key1: [\"neo4j\", \"OrientDB\", \"JanusGraph\"], key2: \"yes it is\"}", actual);
+    }
+
+
+    @Test
+    void shouldPrettyPrintMapWithNestedMap()
+    {
+        MapValue deeplyNestedMap = mapValue(
+                  "key", mapValue("innerKey", stringValue( "val") ),
+                            "otherKey", mapValue(
+                                    "innerKey", mapValue(
+                                            "deepKey", stringValue("val"))));
+        PrettyPrinter printer = new PrettyPrinter();
+
+        deeplyNestedMap.writeTo( printer );
+
+        String actual = printer.value();
+        assertEquals("{key: {innerKey: \"val\"}, otherKey: {innerKey: {deepKey: \"val\"}}}", actual);
+    }
+
+    private MapValue mapValue( Object... keyValue )
+    {
+        // This used to be 'props' but the implementation is the same as 'mapValue' in 'MapValueTest'.
         String[] keys = new String[keyValue.length / 2];
         AnyValue[] values = new AnyValue[keyValue.length / 2];
         for ( int i = 0; i < keyValue.length; i++ )
