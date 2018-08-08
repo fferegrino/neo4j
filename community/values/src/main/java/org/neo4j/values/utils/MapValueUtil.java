@@ -22,13 +22,22 @@ package org.neo4j.values.utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.neo4j.values.AnyValue;
-import org.neo4j.values.storable.Values;
+import org.neo4j.values.storable.DurationValue;
+import org.neo4j.values.utils.map.serializers.CustomMapSerializer;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import static java.lang.String.format;
 
@@ -46,13 +55,14 @@ public class MapValueUtil
         mapper.enable( DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY );
         try
         {
-            HashMap<String, Object> hashMap = (HashMap<String, Object>) mapper.readValue(mapRepresentation, HashMap.class);
+            HashMap<String, Object> hashMap = (HashMap<String, Object>) mapper.readValue( mapRepresentation, HashMap.class );
             replaceArrays( hashMap );
             return hashMap;
         }
         catch ( IOException e )
         {
-            // TODO: do something as the transformation failed
+            // TODO: Indicate error while parsing
+            e.printStackTrace();
         }
         return null;
     }
@@ -120,16 +130,108 @@ public class MapValueUtil
                 else
                 {
                     // I've seen that empty arrays are treated as empty string arrays
-                    map.put( key, new String[0]);
+                    map.put( key, new String[0] );
                 }
             }
             else if ( value instanceof HashMap<?,?> )
             {
                 HashMap<String, Object> innerMap = (HashMap<String, Object>) value;
-                replaceArrays( innerMap );
+                Set<String> keys = innerMap.keySet();
+
+                if ( keys.equals(LOCALDATE_SET) )
+                {
+                    int year = (int) innerMap.get("_year");
+                    int monthValue = (int) innerMap.get("_month");
+                    int dayOfMonth = (int) innerMap.get("_day");
+                    map.put( key, LocalDate.of( year, monthValue, dayOfMonth ) );
+                }
+                else if ( keys.equals(DURATION_SET) )
+                {
+                    //"months", "days", "seconds", "nanos", "units", "naN", "sequenceValue"
+
+                    Object monthsRef = innerMap.get("_months");
+                    long months = monthsRef instanceof Long ? (long) monthsRef : Long.valueOf( (int)monthsRef );
+
+                    Object daysRef = innerMap.get("_days");
+                    long days = daysRef instanceof Long ? (long) daysRef : Long.valueOf( (int)daysRef );
+
+                    Object secondsRef = innerMap.get("_seconds");
+                    long seconds = secondsRef instanceof Long ? (long) secondsRef : Long.valueOf( (int)secondsRef );
+
+                    int nanos = (int) innerMap.get("_nanos");
+
+                    DurationValue duration = DurationValue.duration(months,days,seconds,nanos);
+                    map.put( key, duration );
+                }
+                else if ( keys.equals(LOCALDATETIME_SET) )
+                {
+                    int year = (int) innerMap.get("_year");
+                    int monthValue = (int) innerMap.get("_month");
+                    int dayOfMonth = (int) innerMap.get("_day");
+                    int hour = (int) innerMap.get("_hour");
+                    int minute = (int) innerMap.get("_minute");
+                    int second = (int) innerMap.get("_second");
+                    int nano = (int) innerMap.get("_nano");
+                    map.put( key, LocalDateTime.of( year, monthValue, dayOfMonth, hour, minute, second, nano ) );
+                }
+                else if ( keys.equals(LOCALTIME_SET) )
+                {
+                    int hour = (int) innerMap.get("_hour");
+                    int minute = (int) innerMap.get("_minute");
+                    int second = (int) innerMap.get("_second");
+                    int nano = (int) innerMap.get("_nano");
+                    map.put( key, LocalTime.of( hour, minute, second, nano ) );
+                }
+                else if ( keys.equals(OFFSETTIME_SET) )
+                {
+                    int hour = (int) innerMap.get("_hour");
+                    int minute = (int) innerMap.get("_minute");
+                    int second = (int) innerMap.get("_second");
+                    int nano = (int) innerMap.get("_nano");
+                    String offsetId = (String) innerMap.get("_offset");
+                    map.put( key, OffsetTime.of( hour, minute, second, nano, ZoneOffset.of( offsetId ) ) );
+                }
+                else if ( keys.equals(ZONEDDATETIME_SET) )
+                {
+                    int year = (int) innerMap.get("_year");
+                    int monthValue = (int) innerMap.get("_month");
+                    int dayOfMonth = (int) innerMap.get("_day");
+                    int hour = (int) innerMap.get("_hour");
+                    int minute = (int) innerMap.get("_minute");
+                    int second = (int) innerMap.get("_second");
+                    int nano = (int) innerMap.get("_nano");
+                    String offsetId = (String) innerMap.get("_offset");
+                    map.put( key, ZonedDateTime.of( year, monthValue, dayOfMonth, hour, minute, second, nano, ZoneId.of( offsetId ) ) );
+                }
+                else
+                {
+                    replaceArrays(innerMap);
+                }
             }
         }
     }
+
+    private static final String[] LOCALDATE_KEYS = new String[] { CustomMapSerializer.TYPE_FIELD_NAME, "_year", "_month", "_day" };
+    private static final Set<String> LOCALDATE_SET = new HashSet<>( Arrays.asList( LOCALDATE_KEYS ) );
+
+    //private static final String[] DURATION_KEYS = new String[] { "seconds", "nano", "units", "zero", "negative" };
+    private static final String[] DURATION_KEYS = new String[] {  CustomMapSerializer.TYPE_FIELD_NAME, "_months", "_days", "_seconds", "_nanos" };
+    private static final Set<String> DURATION_SET = new HashSet<>( Arrays.asList( DURATION_KEYS ) );
+
+    private static final String[] LOCALDATETIME_KEYS = new String[] { CustomMapSerializer.TYPE_FIELD_NAME, "_year", "_month", "_day",
+            "_hour", "_minute", "_second", "_nano" };
+    private static final Set<String> LOCALDATETIME_SET = new HashSet<>( Arrays.asList( LOCALDATETIME_KEYS ) );
+
+    private static final String[] LOCALTIME_KEYS = new String[] { CustomMapSerializer.TYPE_FIELD_NAME, "_hour", "_minute", "_second", "_nano" };
+    private static final Set<String> LOCALTIME_SET = new HashSet<>( Arrays.asList( LOCALTIME_KEYS ) );
+
+    private static final String[] OFFSETTIME_KEYS = new String[] { CustomMapSerializer.TYPE_FIELD_NAME, "_offset",
+            "_hour", "_minute", "_second", "_nano"};
+    private static final Set<String> OFFSETTIME_SET = new HashSet<>( Arrays.asList( OFFSETTIME_KEYS ) );
+
+    private static final String[] ZONEDDATETIME_KEYS = new String[] { CustomMapSerializer.TYPE_FIELD_NAME, "_year", "_month", "_day", "_offset",
+            "_hour", "_minute", "_second", "_nano"};
+    private static final Set<String> ZONEDDATETIME_SET = new HashSet<>( Arrays.asList( ZONEDDATETIME_KEYS ) );
 
     /**
      * Serialize a Map into a string
@@ -138,8 +240,7 @@ public class MapValueUtil
      */
     public static String stringifyMap( Map<String, Object> map )
     {
-        ObjectMapper mapper = new ObjectMapper();
-        // Using a HashMap as backing storage...
+        CustomMapSerializer mapper = new CustomMapSerializer();
         String mapRepresentation = null;
         try
         {

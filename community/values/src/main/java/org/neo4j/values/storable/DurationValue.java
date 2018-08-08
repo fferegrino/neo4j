@@ -191,6 +191,23 @@ public final class DurationValue extends ScalarValue implements TemporalAmount, 
     private final long seconds;
     private final int nanos;
 
+    public long getMonths()
+    {
+        return this.months;
+    }
+    public long getDays()
+    {
+        return this.days;
+    }
+    public long getSeconds()
+    {
+        return this.seconds;
+    }
+    public int getNanos()
+    {
+        return this.nanos;
+    }
+
     private static DurationValue newDuration( long months, long days, long seconds, long nanos )
     {
         return seconds == 0 && days == 0 && months == 0 && nanos == 0 // ordered by probability of non-zero
