@@ -23,6 +23,9 @@ Apache Software License, Version 2.0
   Apache Commons Lang
   Data Mapper for Jackson
   Jackson
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   Lucene codecs
   Lucene Common Analyzers
   Lucene Core

@@ -8,6 +8,9 @@ Apache Software License, Version 2.0
   Apache Commons Lang
   Commons Lang
   Commons Logging
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   Lucene Core
   Lucene Memory
   Netty/All-in-One

@@ -25,6 +25,9 @@ Apache Software License, Version 2.0
   dom-storage.js
   ecdsa-sig-formatter.js
   firebase.js
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   Lucene codecs
   Lucene Common Analyzers
   Lucene Core

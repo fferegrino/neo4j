@@ -14,6 +14,9 @@ Apache Software License, Version 2.0
   FindBugs-jsr305
   Guava: Google Core Libraries for Java
   Jackson
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   javax.inject
   jPowerShell
   jProcesses

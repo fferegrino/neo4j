@@ -22,6 +22,9 @@ Third-party licenses
 Apache Software License, Version 2.0
   Apache Commons BeanUtils
   Apache Commons Collections
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   Lucene Core
   Lucene Memory
   Netty/All-in-One

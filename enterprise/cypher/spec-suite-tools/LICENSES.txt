@@ -14,6 +14,9 @@ Apache Software License, Version 2.0
   Data Mapper for Jackson
   Gherkin Repackaged Dependencies
   Jackson
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   Joda convert
   Joda-Time
   jPowerShell

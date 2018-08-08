@@ -18,6 +18,9 @@ Apache Software License, Version 2.0
   Apache Shiro :: Event
   Apache Shiro :: Lang
   Caffeine cache
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   jPowerShell
   jProcesses
   Lucene codecs

@@ -18,6 +18,9 @@ Apache Software License, Version 2.0
   ConcurrentLinkedHashMap
   Data Mapper for Jackson
   Jackson
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   JAX-RS provider for JSON content type
   Jetty :: Http Utility
   Jetty :: IO Utility

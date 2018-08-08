@@ -29,6 +29,9 @@ Apache Software License, Version 2.0
   Graphite Integration for Metrics
   hazelcast-all
   Jackson
+  Jackson-annotations
+  Jackson-core
+  jackson-databind
   JAX-RS provider for JSON content type
   Jetty :: Http Utility
   Jetty :: IO Utility
