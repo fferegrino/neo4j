@@ -775,7 +775,7 @@ public abstract class MapValue extends Value
     @Override
     public NumberType numberType()
     {
-        return null;
+        return NumberType.NO_NUMBER;
     }
 
     @Override
