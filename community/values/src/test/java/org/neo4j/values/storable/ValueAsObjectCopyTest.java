@@ -20,8 +20,10 @@
 package org.neo4j.values.storable;
 
 import org.junit.jupiter.api.Test;
+import org.neo4j.values.utils.MapTestUtil;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -41,7 +43,7 @@ class ValueAsObjectCopyTest
             shouldGivePublic( Values.booleanValue( false ), false ),
             shouldGivePublic( Values.charValue( 'a' ), 'a' ),
             shouldGivePublic( Values.stringValue( "b" ), "b" )
-        );
+    );
 
     @Test
     void shouldProvideScalarValueAsPublic()
@@ -50,6 +52,125 @@ class ValueAsObjectCopyTest
         {
             test.assertGeneratesPublic();
         }
+    }
+
+    // Tests for MapValues
+
+    @Test
+    void shouldGetUnderlyingHashMap()
+    {
+        String[] keys =
+                {
+                        "k1",
+                        "k2",
+                        "k3"
+                };
+        Value[] valuesForMapValue =
+                {
+                        Values.byteValue((byte)1),
+                        Values.intValue(10),
+                        Values.stringValue("v3")
+                };
+
+        Object[] valuesForHashMap =
+                {
+                        (byte)1,
+                        10,
+                        "v3"
+                };
+
+        MapValue value = Values.map(keys, valuesForMapValue);
+
+        HashMap<String, Object> expected = new HashMap<>();
+        for ( int i = 0; i < keys.length; i++ )
+        {
+            expected.put( new String( keys[i] ), valuesForHashMap[i] );
+        }
+
+        assertTrue(MapTestUtil.customComparison(value.asObjectCopy(), expected));
+    }
+
+    @Test
+    void shouldGetUnderlyingHashMapNested()
+    {
+        String[] keys =
+                {
+                        "k1",
+                        "k2",
+                        "k3",
+                        "k4"
+                };
+
+        TextValue s1 = Values.stringValue("s1");
+        Value[] valuesForMapValue =
+                {
+                        Values.byteValue((byte)1),
+                        Values.intValue(10),
+                        Values.stringValue("v3"),
+                        Values.map(new String[]{"n1"}, new Value[] { s1 })
+                };
+
+        Object[] valuesForHashMap =
+                {
+                        (byte)1,
+                        10,
+                        "v3",
+                        new HashMap<String, Object>()
+                        {
+                            {
+                                put("n1","s1");
+                            }
+                        }
+                };
+
+        MapValue value = Values.map(keys, valuesForMapValue);
+
+        HashMap<String, Object> expected = new HashMap<>();
+        for ( int i = 0; i < keys.length; i++ )
+        {
+            expected.put( new String( keys[i] ), valuesForHashMap[i] );
+        }
+
+        assertTrue(MapTestUtil.customComparison(value.asObjectCopy(), expected));
+    }
+
+    @Test
+    void shouldGetUnderlyingHashMapArray()
+    {
+        String[] keys =
+                {
+                        "k1",
+                        "k2",
+                        "k3",
+                        "k4"
+                };
+
+        TextValue s1 = Values.stringValue("s1");
+        Value[] valuesForMapValue =
+                {
+                        Values.byteValue((byte)1),
+                        Values.intValue(10),
+                        Values.stringValue("v3"),
+                        Values.intArray(new int[]{ 10, 11, 12, 13, 14 })
+                };
+
+        Object[] valuesForHashMap =
+                {
+                        (byte)1,
+                        10,
+                        "v3",
+                        new int[]{ 10, 11, 12, 13, 14 }
+                };
+
+        MapValue value = Values.map(keys, valuesForMapValue);
+
+        HashMap<String, Object> expected = new HashMap<>();
+        for ( int i = 0; i < keys.length; i++ )
+        {
+            expected.put( new String( keys[i] ), valuesForHashMap[i] );
+        }
+
+        assertTrue(MapTestUtil.customComparison(value.asObjectCopy(), expected));
     }
 
     // DIRECT ARRAYS

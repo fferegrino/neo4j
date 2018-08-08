@@ -456,7 +456,6 @@ class PrettyPrinterTest
         assertEquals("{key1: [\"neo4j\", \"OrientDB\", \"JanusGraph\"], key2: \"yes it is\"}", actual);
     }
 
-
     @Test
     void shouldPrettyPrintMapWithNestedMap()
     {

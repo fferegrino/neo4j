@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -743,9 +744,14 @@ public abstract class MapValue extends Value
     }
 
     @Override
-    public Object asObjectCopy()
+    public Map<String, Object> asObjectCopy()
     {
-        return null;
+        HashMap<String, Object> deepCopy = new HashMap<>();
+        for ( Map.Entry<String, AnyValue> entry : this.map.entrySet() )
+        {
+            deepCopy.put( new String( entry.getKey() ), ( (Value) entry.getValue() ).asObjectCopy() );
+        }
+        return deepCopy;
     }
 
     @Override
@@ -753,9 +759,9 @@ public abstract class MapValue extends Value
     {
         if ( getContent() == MapValueContent.EMPTY || getContent() == MapValueContent.STORABLE )
         {
-            StringBuilder sb = new StringBuilder("{");
-            final String[] sep = new String[]{""};
-            foreach ( (key, value) ->
+            StringBuilder sb = new StringBuilder( "{" );
+            final String[] sep = new String[]{ "" };
+            foreach(( key, value ) ->
             {
                 sb.append( sep[0] );
                 sb.append( String.format( "'%s'", key ) ); // Single quotes to keep the consistency
