@@ -34,11 +34,13 @@ import java.time.temporal.TemporalUnit;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.neo4j.graphdb.spatial.CRS;
 import org.neo4j.graphdb.spatial.Point;
 import org.neo4j.values.AnyValue;
+import org.neo4j.values.utils.MapValueUtil;
 
 import static java.lang.String.format;
 import static org.neo4j.values.storable.DateTimeValue.datetime;
@@ -487,8 +489,13 @@ public final class Values
 
     public static MapValue mapValue( String mapRepresentation )
     {
-        // TODO: Rebuild the map from a string
-        return MapValue.EMPTY;
+        Map<String, AnyValue> innerMap = MapValueUtil.parseMap(mapRepresentation);
+        if(innerMap == null)
+        {
+            // Something went awfully wrong, should we let the user know?
+            return null;
+        }
+        return new MapValue.MapWrappingMapValue(innerMap);
     }
 
     // BOXED FACTORY METHODS
