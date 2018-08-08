@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.ToIntFunction;
 
 import org.neo4j.helpers.collection.Iterables;
@@ -241,6 +242,10 @@ public class PropertyStore extends CommonAbstractStore<PropertyRecord,NoStoreHea
             {
                 arrayStore.updateRecord( valueRecord );
             }
+            else if ( recordType == PropertyType.MAP )
+            {
+                stringStore.updateRecord( valueRecord );
+            }
             else
             {
                 throw new InvalidRecordException( "Unknown dynamic record"
@@ -284,6 +289,7 @@ public class PropertyStore extends CommonAbstractStore<PropertyRecord,NoStoreHea
         {
         case ARRAY: return arrayStore;
         case STRING: return stringStore;
+        case MAP: return stringStore;
         default: return null;
         }
     }
@@ -499,6 +505,26 @@ public class PropertyStore extends CommonAbstractStore<PropertyRecord,NoStoreHea
         public void writeString( char value ) throws IllegalArgumentException
         {
             setSingleBlockValue( block, keyId, PropertyType.CHAR, value );
+        }
+
+        @Override
+        public void writeMap( Map<String, Object> map ) throws IllegalArgumentException
+        {
+            // TODO: Find a tool to transform from Map<String, AnyValue> to String
+            String mapRepresentation = null;
+
+            byte[] encodedMap = encodeString(mapRepresentation);
+
+            List<DynamicRecord> valueRecords = new ArrayList<>();
+            allocateStringRecords( valueRecords, encodedMap, stringAllocator );
+            setSingleBlockValue( block, keyId, PropertyType.MAP, Iterables.first( valueRecords ).getId() );
+
+            for ( DynamicRecord valueRecord : valueRecords )
+            {
+                valueRecord.setType( PropertyType.MAP.intValue() );
+            }
+
+            block.setValueRecords( valueRecords );
         }
 
         @Override

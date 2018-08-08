@@ -226,6 +226,21 @@ public enum PropertyType
         {
             return TemporalType.calculateNumberOfBlocksUsed( firstBlock );
         }
+    },
+    MAP( 15 )
+    {
+        @Override
+        public Value value( PropertyBlock block, PropertyStore store )
+        {
+            String mapRepresentation = store.getStringFor(block);
+            return Values.mapValue(mapRepresentation);
+        }
+
+        @Override
+        public byte[] readDynamicRecordHeader( byte[] recordBytes )
+        {
+            return EMPTY_BYTE_ARRAY;
+        }
     };
 
     public static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
@@ -299,6 +314,8 @@ public enum PropertyType
             return GEOMETRY;
         case 14:
             return TEMPORAL;
+        case 15:
+            return MAP;
         default:
             return null;
         }

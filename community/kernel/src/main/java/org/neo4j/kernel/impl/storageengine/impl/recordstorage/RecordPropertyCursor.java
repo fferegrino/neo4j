@@ -183,6 +183,7 @@ class RecordPropertyCursor extends PropertyRecord implements StoragePropertyCurs
         case GEOMETRY:
         case SHORT_ARRAY:
         case ARRAY:
+        case MAP:
             // value read is needed to get correct value group since type is not fine grained enough to match all ValueGroups
             return propertyValue().valueGroup();
         default:
@@ -238,6 +239,8 @@ class RecordPropertyCursor extends PropertyRecord implements StoragePropertyCurs
             return geometryValue();
         case TEMPORAL:
             return temporalValue();
+        case MAP:
+            return readMap();
         default:
             throw new IllegalStateException( "Unsupported PropertyType: " + type.name() );
         }
@@ -271,6 +274,17 @@ class RecordPropertyCursor extends PropertyRecord implements StoragePropertyCurs
             stringPage = stringPage( reference );
         }
         return string( this, reference, stringPage );
+    }
+
+    private Value readMap()
+    {
+        long reference = PropertyBlock.fetchLong( currentBlock() );
+        if ( stringPage == null )
+        {
+            stringPage = stringPage( reference );
+        }
+        String string = getLongString(this, reference, stringPage);
+        return Values.mapValue(string);
     }
 
     private Value readShortArray()
@@ -392,11 +406,17 @@ class RecordPropertyCursor extends PropertyRecord implements StoragePropertyCurs
         read.getRecordByCursor( reference, record, RecordLoad.FORCE, pageCursor );
     }
 
-    private TextValue string( RecordPropertyCursor cursor, long reference, PageCursor page )
+    private String getLongString( RecordPropertyCursor cursor, long reference, PageCursor page )
     {
         ByteBuffer buffer = cursor.buffer = read.loadString( reference, cursor.buffer, page );
         buffer.flip();
-        return Values.stringValue( UTF8.decode( buffer.array(), 0, buffer.limit() ) );
+        return UTF8.decode( buffer.array(), 0, buffer.limit() );
+    }
+
+    private TextValue string( RecordPropertyCursor cursor, long reference, PageCursor page )
+    {
+        String value = getLongString(cursor, reference, page);
+        return Values.stringValue(value);
     }
 
     private ArrayValue array( RecordPropertyCursor cursor, long reference, PageCursor page )

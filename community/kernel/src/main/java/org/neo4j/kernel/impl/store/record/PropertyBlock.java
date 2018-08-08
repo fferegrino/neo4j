@@ -182,6 +182,7 @@ public class PropertyBlock implements Cloneable
             {
             case STRING:
             case ARRAY:
+            case MAP:
                 result.append( ",firstDynamic=" ).append( getSingleValueLong() );
                 break;
             default:

@@ -485,6 +485,12 @@ public final class Values
         return new DurationArray( durations );
     }
 
+    public static MapValue mapValue( String mapRepresentation )
+    {
+        // TODO: Rebuild the map from a string
+        return MapValue.EMPTY;
+    }
+
     // BOXED FACTORY METHODS
 
     /**
