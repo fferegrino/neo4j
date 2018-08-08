@@ -21,7 +21,7 @@ package org.neo4j.cypher.internal.runtime.interpreted
 
 import org.opencypher.v9_0.util.CypherTypeException
 import org.neo4j.values.AnyValue
-import org.neo4j.values.storable.{ArrayValue, Value, Values}
+import org.neo4j.values.storable.{ArrayValue, MapValue, MapValueBuilder, Value, Values}
 import org.neo4j.values.virtual.ListValue
 
 import scala.collection.JavaConverters._
@@ -29,6 +29,12 @@ import scala.collection.JavaConverters._
 object makeValueNeoSafe extends (AnyValue => Value) with ListSupport {
 
   def apply(a: AnyValue): Value = a match {
+    case map: MapValue =>
+      val builder = new MapValueBuilder
+      val keys = map.keySet()
+      for (k <- keys.asScala)
+        builder.add(k, makeValueNeoSafe(map.get(k)))
+      builder.build()
     case value: Value => value
     case IsList(l) => transformTraversableToArray(l)
     case _ => throw new CypherTypeException("Property values can only be of primitive types or arrays thereof")

@@ -22,6 +22,7 @@ package org.neo4j.cypher.internal.runtime.interpreted
 import org.opencypher.v9_0.util.CypherTypeException
 import org.opencypher.v9_0.util.test_helpers.CypherFunSuite
 import org.neo4j.values.storable.Values._
+import org.neo4j.values.storable.MapValueBuilder
 import org.neo4j.values.virtual.VirtualValues.list
 
 import scala.Array._
@@ -52,5 +53,42 @@ class MakeValuesNeoSafeTest extends CypherFunSuite {
 
   test("mixed types are not ok") {
     intercept[CypherTypeException](makeValueNeoSafe(list(stringValue("a"), intValue(12), booleanValue(false))))
+  }
+
+  test("takes map with list as content") {
+    val mapBuilder = new MapValueBuilder
+    mapBuilder.add("l", list(longValue(1), longValue(2)))
+
+    val containsVirtual = mapBuilder.build()
+
+    val mapBuilderStorable = new MapValueBuilder()
+    mapBuilderStorable.add("l", longArray(Array(1,2) ))
+    val containsStorable = mapBuilderStorable.build()
+
+    makeValueNeoSafe(containsVirtual) should equal(containsStorable)
+  }
+
+  test("takes nested map as content") {
+    // Virtual
+    val innerBuilderVirtual = new MapValueBuilder
+    innerBuilderVirtual.add("v1", intValue(10))
+    innerBuilderVirtual.add("l", list(longValue(1), longValue(2)))
+    val innerMapVirtual = innerBuilderVirtual.build()
+
+    val outerBuilderVirtual = new MapValueBuilder
+    outerBuilderVirtual.add("inner", innerMapVirtual)
+    val outerMapVirtual = outerBuilderVirtual.build()
+
+    // Storables
+    val innerBuilderStorable = new MapValueBuilder
+    innerBuilderStorable.add("v1", intValue(10))
+    innerBuilderStorable.add("l", longArray(Array(1,2) ))
+    val innerMapStorable = innerBuilderStorable.build()
+
+    val outerBuilderStorable = new MapValueBuilder()
+    outerBuilderStorable.add("inner", innerMapStorable)
+    val outerMapStorable = outerBuilderStorable.build()
+
+    makeValueNeoSafe(outerMapVirtual) should equal(outerMapStorable)
   }
 }
