@@ -19,7 +19,18 @@
  */
 package org.neo4j.values.storable;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.neo4j.values.utils.MapValueUtil;
+
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.OffsetTime;
+import java.time.Period;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.neo4j.values.storable.Values.booleanArray;
@@ -44,6 +55,107 @@ import static org.neo4j.values.utils.AnyValueTestUtil.assertEqual;
 
 class ValuesTest
 {
+    @Test
+    void shouldParseMapWithArrays()
+    {
+        MapValueBuilder mv = new MapValueBuilder();
+        mv.add("ints", intArray(new int[] { 1, 2, 3}));
+        mv.add("bools", booleanArray(new boolean [] { true, false, true, false, false }));
+        MapValue expectedMap = mv.build();
+
+        MapValue actualMap = Values.mapValue( "{\"ints\":[1,2,3], \"bools\":[ true, false, true, false, false ]}}" );
+
+        Assert.assertEquals(expectedMap, actualMap);
+    }
+
+    @Test
+    void shouldParseMapWithDatesTypes()
+    {
+        LocalDate localDateExpected = LocalDate.of(2018, 1, 1);
+        OffsetTime offsetTimeExpected = OffsetTime.of(12, 50, 35, 0, ZoneOffset.ofHours(1));
+        LocalTime localTimeExpected = LocalTime.of(12, 50, 35, 0);
+        ZonedDateTime zonedDateTimeExpected = ZonedDateTime.of(2018, 1, 1, 21, 40, 32, 0, ZoneOffset.ofHours(1));
+        LocalDateTime localDateTimeExpected = LocalDateTime.of(2015, 7, 4, 19, 32, 24);
+
+        MapValueBuilder mv = new MapValueBuilder();
+        mv.add("localdate", Values.of(localDateExpected));
+        mv.add("localtime", Values.of(localTimeExpected));
+        mv.add("localdatetime", Values.of(localDateTimeExpected));
+        mv.add("offsettime", Values.of(offsetTimeExpected));
+        mv.add("zoneddatetime", Values.of(zonedDateTimeExpected));
+
+        MapValue expectedMap = mv.build();
+
+        String stringifiedMap = MapValueUtil.stringifyMap(expectedMap.asObjectCopy());
+        MapValue actualMap = Values.mapValue(stringifiedMap);
+
+        Assert.assertEquals(expectedMap, actualMap);
+    }
+
+    @Test
+    void shouldParseMapWithDatesTypesNow()
+    {
+        MapValueBuilder mv = new MapValueBuilder();
+        mv.add("localdate", Values.of(LocalDate.now()));
+        mv.add("localtime", Values.of(LocalTime.now()));
+        mv.add("localdatetime", Values.of(LocalDateTime.now()));
+        mv.add("offsettime", Values.of(OffsetTime.now()));
+        mv.add("zoneddatetime", Values.of(ZonedDateTime.now()));
+
+        MapValue expectedMap = mv.build();
+
+        String stringifiedMap = MapValueUtil.stringifyMap(expectedMap.asObjectCopy());
+        MapValue actualMap = Values.mapValue(stringifiedMap);
+
+        Assert.assertEquals(expectedMap, actualMap);
+    }
+
+    @Test
+    void shouldParseMapWithJustDurations()
+    {
+        MapValueBuilder mv = new MapValueBuilder();
+        Duration duration = Duration.ofSeconds(45).plusHours(45).plusDays(400);
+        mv.add("duration", Values.of(duration));
+        mv.add("zero", DurationValue.ZERO);
+        mv.add("thousand", DurationValue.duration(Period.of(Integer.MAX_VALUE,Integer.MAX_VALUE,Integer.MAX_VALUE)));
+
+        MapValue expectedMap = mv.build();
+
+        String stringifiedMap = MapValueUtil.stringifyMap(expectedMap.asObjectCopy());
+        MapValue actualMap = Values.mapValue(stringifiedMap);
+
+        Assert.assertEquals(expectedMap, actualMap);
+    }
+
+    @Test
+    void shouldParseMapWithArraysNested()
+    {
+        MapValueBuilder mvInner = new MapValueBuilder();
+        mvInner.add("ints", intArray(new int[] { 1, 2, 3}));
+        mvInner.add("bools", booleanArray(new boolean [] { true, false, true, false, false }));
+        MapValueBuilder mvOuter  = new MapValueBuilder();
+        mvOuter.add("map", mvInner.build());
+        MapValue expectedMap = mvOuter.build();
+
+        MapValue actualMap = Values.mapValue("{\"map\": " +
+                "{\"ints\":[1,2,3], \"bools\":[ true, false, true, false, false ]}}" +
+                " }");
+
+        Assert.assertEquals(expectedMap, actualMap);
+    }
+
+    @Test
+    void shouldParseMapWithEmptyArray()
+    {
+        MapValueBuilder mvOuter  = new MapValueBuilder();
+        mvOuter.add("empty", stringArray());
+        MapValue expectedMap = mvOuter.build();
+
+        MapValue actualMap = Values.mapValue("{\"empty\": [] }");
+
+        Assert.assertEquals(expectedMap, actualMap);
+    }
+
     @Test
     void shouldBeEqualToItself()
     {
