@@ -27,7 +27,9 @@ import java.time.ZonedDateTime;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
+import java.util.Map;
 
+import org.neo4j.values.AnyValue;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.TextArray;
@@ -117,6 +119,12 @@ public class PrettyPrinter implements AnyValueWriter<RuntimeException>
     public void beginMap( int size )
     {
         stack.push( new MapWriter() );
+    }
+
+    @Override
+    public void writeMap( Map<String, AnyValue> map ) throws RuntimeException
+    {
+        // TODO: Missing implementation
     }
 
     @Override

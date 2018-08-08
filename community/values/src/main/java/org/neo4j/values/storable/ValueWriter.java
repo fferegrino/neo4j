@@ -19,12 +19,15 @@
  */
 package org.neo4j.values.storable;
 
+import org.neo4j.values.AnyValue;
+
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetTime;
 import java.time.ZonedDateTime;
+import java.util.Map;
 
 /**
  * Writer of values.
@@ -99,6 +102,12 @@ public interface ValueWriter<E extends Exception>
     void writeLocalDateTime( LocalDateTime localDateTime ) throws E;
 
     void writeDateTime( ZonedDateTime zonedDateTime ) throws E;
+
+    void beginMap( int size ) throws E;
+
+    void writeMap( Map<String, AnyValue> map ) throws E;
+
+    void endMap() throws E;
 
     class Adapter<E extends Exception> implements ValueWriter<E>
     {
@@ -199,6 +208,21 @@ public interface ValueWriter<E extends Exception>
 
         @Override
         public void writeDateTime( ZonedDateTime zonedDateTime ) throws E
+        {   // no-op
+        }
+
+        @Override
+        public void beginMap( int size ) throws E
+        {   // no-op
+        }
+
+        @Override
+        public void writeMap( Map<String, AnyValue> map ) throws E
+        {   // no-op
+        }
+
+        @Override
+        public void endMap() throws E
         {   // no-op
         }
     }

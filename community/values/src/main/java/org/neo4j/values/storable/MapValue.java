@@ -732,7 +732,14 @@ public abstract class MapValue extends Value
     @Override
     public <E extends Exception> void writeTo( ValueWriter<E> writer ) throws E
     {
+        if ( getContent() == MapValueContent.VIRTUAL || getContent() == MapValueContent.MIXED )
+        {
+            throw new UnsupportedOperationException( "Can't save VIRTUAL or MIXED content maps" );
+        }
 
+        writer.beginMap( size() );
+        writer.writeMap( map );
+        writer.endMap();
     }
 
     @Override

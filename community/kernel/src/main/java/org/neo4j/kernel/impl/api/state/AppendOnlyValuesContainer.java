@@ -32,6 +32,7 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nonnull;
 
 import org.neo4j.graphdb.Resource;
@@ -40,6 +41,7 @@ import org.neo4j.kernel.impl.util.collection.Memory;
 import org.neo4j.kernel.impl.util.collection.MemoryAllocator;
 import org.neo4j.unsafe.impl.internal.dragons.UnsafeUtil;
 import org.neo4j.util.VisibleForTesting;
+import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.ArrayValue;
 import org.neo4j.values.storable.BooleanArray;
 import org.neo4j.values.storable.BooleanValue;
@@ -846,6 +848,24 @@ public class AppendOnlyValuesContainer implements ValuesContainer
                 final int zoneId = ENCODED_ZONE_ID | TimeZones.map( zone.getId() );
                 buf.putInt( zoneId );
             }
+        }
+
+        @Override
+        public void beginMap( int size ) throws RuntimeException
+        {
+            // TODO: Missing implementation
+        }
+
+        @Override
+        public void writeMap( Map<String, AnyValue> map ) throws RuntimeException
+        {
+            // TODO: Missing implementation
+        }
+
+        @Override
+        public void endMap() throws RuntimeException
+        {
+            // TODO: Missing implementation
         }
     }
 }

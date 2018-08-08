@@ -25,8 +25,10 @@ import java.time.LocalTime;
 import java.time.OffsetTime;
 import java.time.ZonedDateTime;
 import java.util.Base64;
+import java.util.Map;
 
 import org.neo4j.string.UTF8;
+import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.DateTimeValue;
 import org.neo4j.values.storable.DateValue;
@@ -201,6 +203,24 @@ public final class ArrayEncoder
         {
             builder.append( DateTimeValue.datetime( zonedDateTime ).prettyPrint() );
             builder.append( '|' );
+        }
+
+        @Override
+        public void beginMap( int size ) throws RuntimeException
+        {
+            // TODO: Missing implementation
+        }
+
+        @Override
+        public void writeMap( Map<String, AnyValue> map ) throws RuntimeException
+        {
+            // TODO: Missing implementation
+        }
+
+        @Override
+        public void endMap() throws RuntimeException
+        {
+            // TODO: Missing implementation
         }
 
         @Override

@@ -32,6 +32,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Path;
@@ -40,6 +41,7 @@ import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.spatial.Point;
 import org.neo4j.graphdb.traversal.Paths;
 import org.neo4j.helpers.collection.ReverseArrayIterator;
+import org.neo4j.values.AnyValue;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.DurationValue;
@@ -135,6 +137,12 @@ public abstract class BaseToObjectValueWriter<E extends Exception> implements An
     public void beginMap( int size ) throws RuntimeException
     {
         stack.push( new MapWriter( size ) );
+    }
+
+    @Override
+    public void writeMap( Map<String, AnyValue> map )
+    {
+        // TODO: Missing implementation
     }
 
     @Override

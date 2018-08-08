@@ -21,13 +21,13 @@ package org.neo4j.cypher.internal.runtime.interpreted
 
 import java.time._
 import java.time.temporal.TemporalAmount
+import java.util
 
 import org.opencypher.v9_0.util.CypherTypeException
 import org.neo4j.graphdb.spatial.Point
 import org.neo4j.values.storable.{ArrayValue, _}
 import org.neo4j.values.virtual._
 import org.neo4j.values.{AnyValue, AnyValueWriter}
-
 import org.neo4j.kernel.internal.Version
 
 import scala.reflect.ClassTag
@@ -204,6 +204,8 @@ object CastSupport {
                                    properties: MapValue): Unit = fail()
 
     override def beginMap(size: Int): Unit = fail()
+
+    override def writeMap(map: util.Map[String, AnyValue]): Unit = fail()
 
     override def endMap(): Unit = fail()
 

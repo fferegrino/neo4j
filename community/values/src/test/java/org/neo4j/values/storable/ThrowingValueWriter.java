@@ -19,11 +19,14 @@
  */
 package org.neo4j.values.storable;
 
+import org.neo4j.values.AnyValue;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetTime;
 import java.time.ZonedDateTime;
+import java.util.Map;
 import java.util.function.Supplier;
 
 public abstract class ThrowingValueWriter<E extends Exception> implements ValueWriter<E>
@@ -169,5 +172,23 @@ public abstract class ThrowingValueWriter<E extends Exception> implements ValueW
     public void writeDateTime( ZonedDateTime zonedDateTime ) throws E
     {
         throw exception( "writeDateTime" );
+    }
+
+    @Override
+    public void beginMap( int size ) throws E
+    {
+        throw exception( "beginMap" );
+    }
+
+    @Override
+    public void writeMap( Map<String, AnyValue> map ) throws E
+    {
+        throw exception( "writeMap" );
+    }
+
+    @Override
+    public void endMap() throws E
+    {
+        throw exception( "endMap" );
     }
 }

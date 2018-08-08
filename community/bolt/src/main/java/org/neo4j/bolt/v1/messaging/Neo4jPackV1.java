@@ -27,6 +27,7 @@ import java.time.OffsetTime;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.neo4j.bolt.messaging.BoltIOException;
 import org.neo4j.bolt.messaging.Neo4jPack;
@@ -158,6 +159,13 @@ public class Neo4jPackV1 implements Neo4jPack
         public void beginMap( int size ) throws IOException
         {
             packMapHeader( size );
+        }
+
+        @Override
+        public void writeMap( Map<String, AnyValue> map )
+        {
+            // TODO: Missing implementation
+            //do nothing
         }
 
         @Override

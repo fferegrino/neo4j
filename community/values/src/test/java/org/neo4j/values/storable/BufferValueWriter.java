@@ -20,6 +20,7 @@
 package org.neo4j.values.storable;
 
 import org.hamcrest.Matchers;
+import org.neo4j.values.AnyValue;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -29,6 +30,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static java.lang.String.format;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -44,6 +46,9 @@ public class BufferValueWriter implements ValueWriter<RuntimeException>
         WriteByteArray,
         BeginArray,
         EndArray,
+        BeginMap,
+        WriteKeyId,
+        EndMap,
     }
 
     public static class Special
@@ -216,6 +221,24 @@ public class BufferValueWriter implements ValueWriter<RuntimeException>
         buffer.add( DateTimeValue.datetime( zonedDateTime ) );
     }
 
+    @Override
+    public void beginMap( int size )
+    {
+        buffer.add( BufferValueWriter.Specials.beginMap( size ) );
+    }
+
+    @Override
+    public void writeMap( Map<String, AnyValue> map )
+    {
+        // TODO: Missing implementation
+    }
+
+    @Override
+    public void endMap()
+    {
+        buffer.add( BufferValueWriter.Specials.endMap() );
+    }
+
     @SuppressWarnings( "WeakerAccess" )
     public static class Specials
     {
@@ -232,6 +255,16 @@ public class BufferValueWriter implements ValueWriter<RuntimeException>
         public static Special endArray()
         {
             return new Special( EndArray, 0 );
+        }
+
+        public static Special beginMap( int size )
+        {
+            return new Special( BufferValueWriter.SpecialKind.BeginMap, size );
+        }
+
+        public static Special endMap()
+        {
+            return new Special( BufferValueWriter.SpecialKind.EndMap, 0 );
         }
     }
 }

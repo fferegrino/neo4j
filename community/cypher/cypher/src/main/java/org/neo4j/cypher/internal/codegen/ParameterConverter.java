@@ -32,6 +32,7 @@ import java.util.Deque;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.neo4j.graphdb.Node;
 import org.neo4j.graphdb.Path;
@@ -39,6 +40,7 @@ import org.neo4j.graphdb.PropertyContainer;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.helpers.collection.ReverseArrayIterator;
 import org.neo4j.kernel.impl.core.EmbeddedProxySPI;
+import org.neo4j.values.AnyValue;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.DurationValue;
@@ -107,6 +109,12 @@ class ParameterConverter implements AnyValueWriter<RuntimeException>
     public void beginMap( int size )
     {
         stack.push( new MapWriter( size ) );
+    }
+
+    @Override
+    public void writeMap( Map<String, AnyValue> map ) throws RuntimeException
+    {
+        // TODO: Missing implementation
     }
 
     @Override

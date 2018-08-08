@@ -31,14 +31,14 @@ import org.neo4j.values.storable.BufferValueWriter.Specials;
 import org.neo4j.values.storable.Values;
 
 import static org.neo4j.values.BufferAnyValueWriter.Specials.beginList;
-import static org.neo4j.values.BufferAnyValueWriter.Specials.beginMap;
 import static org.neo4j.values.BufferAnyValueWriter.Specials.endList;
-import static org.neo4j.values.BufferAnyValueWriter.Specials.endMap;
 import static org.neo4j.values.BufferAnyValueWriter.Specials.writeRelationship;
 import static org.neo4j.values.BufferAnyValueWriter.Specials.writeRelationshipReference;
 import static org.neo4j.values.BufferAnyValueWriter.Specials.writeNode;
 import static org.neo4j.values.BufferAnyValueWriter.Specials.writeNodeReference;
 import static org.neo4j.values.BufferAnyValueWriter.Specials.writePath;
+import static org.neo4j.values.storable.BufferValueWriter.Specials.beginMap;
+import static org.neo4j.values.storable.BufferValueWriter.Specials.endMap;
 import static org.neo4j.values.storable.Values.booleanValue;
 import static org.neo4j.values.storable.Values.byteArray;
 import static org.neo4j.values.storable.Values.charValue;
