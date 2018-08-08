@@ -487,15 +487,36 @@ public final class Values
         return new DurationArray( durations );
     }
 
+    /**
+     * Takes a map represented as a string and returns a MapValue
+     * @param mapRepresentation String containing the representation of a MapValue
+     * @return
+     */
     public static MapValue mapValue( String mapRepresentation )
     {
-        Map<String, AnyValue> innerMap = MapValueUtil.parseMap(mapRepresentation);
-        if(innerMap == null)
+        Map<String, Object> innerMap = MapValueUtil.parseMap( mapRepresentation );
+        if ( innerMap == null )
         {
             // Something went awfully wrong, should we let the user know?
             return null;
         }
-        return new MapValue.MapWrappingMapValue(innerMap);
+        return (MapValue) of( innerMap );
+    }
+
+    /**
+     * Takes a map of objects to return a MapValue
+     * @param map A map of String->Object where each Object should be transformable to a Value
+     * @return
+     */
+    public static MapValue mapValue( Map<String, Object> map )
+    {
+        Map<String, AnyValue> mapVal = new HashMap<>();
+        for ( Map.Entry<String, Object> entry : map.entrySet() )
+        {
+            Value v = of( entry.getValue() );
+            mapVal.put( entry.getKey(), v);
+        }
+        return new MapValue.MapWrappingMapValue( mapVal );
     }
 
     // BOXED FACTORY METHODS
@@ -602,6 +623,10 @@ public final class Values
         if ( value instanceof Point )
         {
             return Values.point( (Point) value );
+        }
+        if ( value instanceof Map )
+        {
+            return mapValue( (Map<String, Object>) value );
         }
         if ( value instanceof Value )
         {

@@ -36,23 +36,17 @@ public class MapValueUtil
      * @param mapRepresentation
      * @return
      */
-    public static Map<String, AnyValue> parseMap( String mapRepresentation )
+    public static Map<String, Object> parseMap( String mapRepresentation )
     {
         ObjectMapper mapper = new ObjectMapper();
         try
         {
             HashMap<String, Object> hashMap = (HashMap<String, Object>) mapper.readValue(mapRepresentation, HashMap.class);
-            HashMap<String, AnyValue> avMap = new HashMap<>();
-            for ( Map.Entry<String, Object> entry : hashMap.entrySet() )
-            {
-                avMap.put( entry.getKey(), Values.of( entry.getValue() ) );
-            }
-            return avMap;
+            return hashMap;
         }
-        catch (IOException e)
+        catch ( IOException e )
         {
-            // I'm eating this exception, this is NOT good
-            e.printStackTrace();
+            // TODO: do something as the transformation failed
         }
         return null;
     }
@@ -73,7 +67,7 @@ public class MapValueUtil
         }
         catch ( JsonProcessingException e )
         {
-            throw new IllegalArgumentException("There was an error converting your map to a string", e);
+            throw new IllegalArgumentException( "There was an error converting your map to a string", e );
         }
         return mapRepresentation;
     }
