@@ -19,8 +19,6 @@
  */
 package org.neo4j.values.storable;
 
-import org.neo4j.values.AnyValue;
-
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -105,7 +103,7 @@ public interface ValueWriter<E extends Exception>
 
     void beginMap( int size ) throws E;
 
-    void writeMap( Map<String, AnyValue> map ) throws E;
+    void writeMap( Map<String, Object> map ) throws E;
 
     void endMap() throws E;
 
@@ -217,7 +215,7 @@ public interface ValueWriter<E extends Exception>
         }
 
         @Override
-        public void writeMap( Map<String, AnyValue> map ) throws E
+        public void writeMap( Map<String, Object> map ) throws E
         {   // no-op
         }
 

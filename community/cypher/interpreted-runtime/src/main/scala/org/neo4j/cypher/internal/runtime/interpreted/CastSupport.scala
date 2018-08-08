@@ -205,7 +205,7 @@ object CastSupport {
 
     override def beginMap(size: Int): Unit = fail()
 
-    override def writeMap(map: util.Map[String, AnyValue]): Unit = fail()
+    override def writeMap(map: util.Map[String, AnyRef]): Unit = fail()
 
     override def endMap(): Unit = fail()
 

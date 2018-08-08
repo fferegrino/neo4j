@@ -28,7 +28,6 @@ import java.util.Base64;
 import java.util.Map;
 
 import org.neo4j.string.UTF8;
-import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.DateTimeValue;
 import org.neo4j.values.storable.DateValue;
@@ -212,7 +211,7 @@ public final class ArrayEncoder
         }
 
         @Override
-        public void writeMap( Map<String, AnyValue> map ) throws RuntimeException
+        public void writeMap( Map<String, Object> map ) throws RuntimeException
         {
             // TODO: Missing implementation
         }

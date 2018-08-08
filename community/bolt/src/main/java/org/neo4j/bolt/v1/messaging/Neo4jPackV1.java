@@ -162,7 +162,7 @@ public class Neo4jPackV1 implements Neo4jPack
         }
 
         @Override
-        public void writeMap( Map<String, AnyValue> map )
+        public void writeMap( Map<String, Object> map )
         {
             // TODO: Missing implementation
             //do nothing

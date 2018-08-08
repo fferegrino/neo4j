@@ -41,7 +41,6 @@ import org.neo4j.kernel.impl.util.collection.Memory;
 import org.neo4j.kernel.impl.util.collection.MemoryAllocator;
 import org.neo4j.unsafe.impl.internal.dragons.UnsafeUtil;
 import org.neo4j.util.VisibleForTesting;
-import org.neo4j.values.AnyValue;
 import org.neo4j.values.storable.ArrayValue;
 import org.neo4j.values.storable.BooleanArray;
 import org.neo4j.values.storable.BooleanValue;
@@ -857,7 +856,7 @@ public class AppendOnlyValuesContainer implements ValuesContainer
         }
 
         @Override
-        public void writeMap( Map<String, AnyValue> map ) throws RuntimeException
+        public void writeMap( Map<String, Object> map ) throws RuntimeException
         {
             // TODO: Missing implementation
         }

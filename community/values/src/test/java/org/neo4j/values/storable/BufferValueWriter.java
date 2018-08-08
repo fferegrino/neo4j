@@ -20,7 +20,6 @@
 package org.neo4j.values.storable;
 
 import org.hamcrest.Matchers;
-import org.neo4j.values.AnyValue;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -228,7 +227,7 @@ public class BufferValueWriter implements ValueWriter<RuntimeException>
     }
 
     @Override
-    public void writeMap( Map<String, AnyValue> map )
+    public void writeMap( Map<String, Object> map )
     {
         // TODO: Missing implementation
     }

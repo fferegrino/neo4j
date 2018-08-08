@@ -40,7 +40,6 @@ import org.neo4j.graphdb.PropertyContainer;
 import org.neo4j.graphdb.Relationship;
 import org.neo4j.helpers.collection.ReverseArrayIterator;
 import org.neo4j.kernel.impl.core.EmbeddedProxySPI;
-import org.neo4j.values.AnyValue;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.DurationValue;
@@ -112,7 +111,7 @@ class ParameterConverter implements AnyValueWriter<RuntimeException>
     }
 
     @Override
-    public void writeMap( Map<String, AnyValue> map ) throws RuntimeException
+    public void writeMap( Map<String, Object> map ) throws RuntimeException
     {
         // TODO: Missing implementation
     }

@@ -41,7 +41,6 @@ import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.spatial.Point;
 import org.neo4j.graphdb.traversal.Paths;
 import org.neo4j.helpers.collection.ReverseArrayIterator;
-import org.neo4j.values.AnyValue;
 import org.neo4j.values.AnyValueWriter;
 import org.neo4j.values.storable.CoordinateReferenceSystem;
 import org.neo4j.values.storable.DurationValue;
@@ -140,7 +139,7 @@ public abstract class BaseToObjectValueWriter<E extends Exception> implements An
     }
 
     @Override
-    public void writeMap( Map<String, AnyValue> map )
+    public void writeMap( Map<String, Object> map )
     {
         // TODO: Missing implementation
     }

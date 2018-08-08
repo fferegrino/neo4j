@@ -739,7 +739,7 @@ public abstract class MapValue extends Value
         }
 
         writer.beginMap( size() );
-        writer.writeMap( map );
+        writer.writeMap( asObjectCopy() );
         writer.endMap();
     }
 
