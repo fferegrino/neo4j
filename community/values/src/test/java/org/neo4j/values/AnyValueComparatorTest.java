@@ -57,21 +57,6 @@ class AnyValueComparatorTest
     private static Comparator<AnyValue> comparator = AnyValues.COMPARATOR;
 
     private Object[] objs = new Object[]{
-            // MAP LIKE TYPES
-
-            // Map
-            map(),
-            map( "1", 'a' ),
-            map( "1", 'b' ),
-            map( "2", 'a' ),
-            map( "1", map( "1", map( "1", 'a' ) ), "2", 'x' ),
-            map( "1", map( "1", map( "1", 'b' ) ), "2", 'x' ),
-            map( "1", 'a', "2", 'b' ),
-            map( "1", 'b', "2", map() ),
-            map( "1", 'b', "2", map( "10", 'a' ) ),
-            map( "1", 'b', "2", map( "10", 'b' ) ),
-            map( "1", 'b', "2", map( "20", 'a' ) ),
-            map( "1", 'b', "2", 'a' ),
 
             // Node
             node( 1L ),
@@ -119,6 +104,22 @@ class AnyValueComparatorTest
             path( nodes( 3L ), relationships() ),
             path( nodes( 4L, 5L ), relationships( 2L ) ),
             path( nodes( 5L, 4L ), relationships( 2L ) ),
+
+            // MAP LIKE TYPES
+
+            // Map
+            map(),
+            map( "1", 'a' ),
+            map( "1", 'b' ),
+            map( "2", 'a' ),
+            map( "1", map( "1", map( "1", 'a' ) ), "2", 'x' ),
+            map( "1", map( "1", map( "1", 'b' ) ), "2", 'x' ),
+            map( "1", 'a', "2", 'b' ),
+            map( "1", 'b', "2", map() ),
+            map( "1", 'b', "2", map( "10", 'a' ) ),
+            map( "1", 'b', "2", map( "10", 'b' ) ),
+            map( "1", 'b', "2", map( "20", 'a' ) ),
+            map( "1", 'b', "2", 'a' ),
 
             // SCALARS
             pointValue( CoordinateReferenceSystem.Cartesian, 1.0, 1.0 ),
