@@ -43,6 +43,12 @@ import static java.lang.String.format;
 
 public class MapValueUtil
 {
+    static CustomMapSerializer MAPPER = new CustomMapSerializer();
+
+    static
+    {
+        MAPPER.enable( DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY );
+    }
 
     /**
      * Turn a string representation of a Map<String, Object> into a Map<String, AnyValue>.
@@ -51,11 +57,9 @@ public class MapValueUtil
      */
     public static Map<String, Object> parseMap( String mapRepresentation )
     {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.enable( DeserializationFeature.USE_JAVA_ARRAY_FOR_JSON_ARRAY );
         try
         {
-            HashMap<String, Object> hashMap = (HashMap<String, Object>) mapper.readValue( mapRepresentation, HashMap.class );
+            HashMap<String, Object> hashMap = (HashMap<String, Object>) MAPPER.readValue( mapRepresentation, HashMap.class );
             replaceArrays( hashMap );
             return hashMap;
         }
@@ -240,11 +244,10 @@ public class MapValueUtil
      */
     public static String stringifyMap( Map<String, Object> map )
     {
-        CustomMapSerializer mapper = new CustomMapSerializer();
         String mapRepresentation = null;
         try
         {
-            mapRepresentation = mapper.writeValueAsString( map );
+            mapRepresentation = MAPPER.writeValueAsString( map );
         }
         catch ( JsonProcessingException e )
         {
