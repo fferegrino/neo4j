@@ -80,7 +80,7 @@ public class ValueUtilsTest
     }
 
     @Test
-    @Ignore("Think of what to do with mixed-type arrays")
+    @Ignore( "Think of what to do with mixed-type arrays" )
     public void shouldHandleMaps()
     {
         // Given

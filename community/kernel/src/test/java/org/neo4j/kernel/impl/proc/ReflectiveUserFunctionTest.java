@@ -131,7 +131,7 @@ public class ReflectiveUserFunctionTest
     }
 
     @Test
-    @Ignore("HashMap should be able be converted to MapValue holding VirtualValues")
+    @Ignore( "HashMap should be able be converted to MapValue holding VirtualValues" )
     public void shouldRunClassWithMultipleFunctionsDeclared() throws Throwable
     {
         // Given
