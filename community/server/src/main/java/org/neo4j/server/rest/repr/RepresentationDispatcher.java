@@ -20,6 +20,7 @@
 package org.neo4j.server.rest.repr;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.neo4j.server.helpers.PropertyTypeDispatcher;
 
@@ -171,5 +172,11 @@ public abstract class RepresentationDispatcher extends PropertyTypeDispatcher<St
     protected Representation dispatchCharacterProperty( char property, String param )
     {
         return number( property );
+    }
+
+    @Override
+    protected Representation dispatchMap( Map<String, Object> property, String param )
+    {
+        return new MapRepresentation(property);
     }
 }

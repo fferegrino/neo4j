@@ -22,6 +22,8 @@ package org.neo4j.server.rest.repr;
 import org.neo4j.graphdb.PropertyContainer;
 import org.neo4j.server.helpers.PropertyTypeDispatcher;
 
+import java.util.Map;
+
 public final class PropertiesRepresentation extends MappingRepresentation
 {
     private final PropertyContainer entity;
@@ -64,6 +66,13 @@ public final class PropertiesRepresentation extends MappingRepresentation
         protected Void dispatchBooleanProperty( boolean property, String param )
         {
             writer.writeBoolean( param, property );
+            return null;
+        }
+
+        @Override
+        protected Void dispatchMap( Map<String, Object> property, String param )
+        {
+            // TODO: understand writer and write map
             return null;
         }
 

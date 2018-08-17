@@ -20,6 +20,7 @@
 package org.neo4j.server.rest.repr;
 
 import java.net.URI;
+import java.util.Map;
 
 import org.neo4j.graphdb.RelationshipType;
 import org.neo4j.helpers.collection.IterableWrapper;
@@ -88,6 +89,11 @@ public class ValueRepresentation extends Representation
         return new ValueRepresentation( RepresentationType.BOOLEAN, value );
     }
 
+    public static ValueRepresentation map( Map<String, Object> map )
+    {
+        return new ValueRepresentation( RepresentationType.MAP, map );
+    }
+
     public static ValueRepresentation relationshipType( RelationshipType type )
     {
         return new ValueRepresentation( RepresentationType.RELATIONSHIP_TYPE, type.name() );
@@ -153,6 +159,12 @@ public class ValueRepresentation extends Representation
                 protected Representation dispatchBooleanProperty( boolean property, Void param )
                 {
                     return bool( property );
+                }
+
+                @Override
+                protected Representation dispatchMap( Map<String, Object> property, Void param )
+                {
+                    return map( property );
                 }
 
                 @Override

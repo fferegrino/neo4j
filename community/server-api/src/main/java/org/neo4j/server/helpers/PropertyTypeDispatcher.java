@@ -19,6 +19,7 @@
  */
 package org.neo4j.server.helpers;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -82,6 +83,10 @@ public abstract class PropertyTypeDispatcher<K, T>
         else if ( property instanceof Object[] )
         {
             return dispatchOtherArray( (Object[]) property, param );
+        }
+        else if ( property instanceof Map<?,?> )
+        {
+            return dispatchMap( (Map<String, Object>) property, param );
         }
         else
         {
@@ -239,6 +244,9 @@ public abstract class PropertyTypeDispatcher<K, T>
 
     @SuppressWarnings( "boxing" )
     protected abstract T dispatchBooleanProperty( boolean property, K param );
+
+    @SuppressWarnings( "boxing" )
+    protected abstract T dispatchMap( Map<String, Object> property, K param );
 
     protected T dispatchOtherProperty( Object property, K param )
     {
