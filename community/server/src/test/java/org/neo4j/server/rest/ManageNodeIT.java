@@ -167,10 +167,10 @@ public class ManageNodeIT extends AbstractRestFunctionalDocTestBase
     }
 
     @Test
-    public void shouldGet400WhenCreatingNodeUnsupportedNestedPropertyValues()
+    public void shouldGetValidResponseWhenCreatingNodeNestedPropertyValues()
     {
         JaxRsResponse response = sendCreateRequestToServer("{\"foo\" : {\"bar\" : \"baz\"}}");
-        assertEquals( 400, response.getStatus() );
+        assertEquals( 201, response.getStatus() );
     }
 
     private JaxRsResponse sendCreateRequestToServer( final String json )

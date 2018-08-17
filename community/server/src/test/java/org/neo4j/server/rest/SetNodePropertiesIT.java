@@ -73,12 +73,12 @@ public class SetNodePropertiesIT extends
 
     @Test
     @Graph( "jim knows joe" )
-    public void shouldReturn400WhenSendinIncompatibleJsonProperties()
+    public void shouldReturnValidWhenSendinMapJsonProperties()
     {
         Map<String, Object> map = new HashMap<>();
         map.put( "jim", new HashMap<String, Object>() );
         gen.get().payload( JsonHelper.createJsonFrom( map ) ).expectedStatus(
-                400 ).put( getPropertiesUri( data.get().get( "jim" ) ) );
+                204 ).put( getPropertiesUri( data.get().get( "jim" ) ) );
     }
 
     @Test
@@ -128,12 +128,12 @@ public class SetNodePropertiesIT extends
                  "Nesting properties is not supported. You could for example store the\n" +
                  "nested JSON as a string instead." )
     @Test
-    public void shouldReturn400WhenSendinIncompatibleJsonProperty()
+    public void shouldReturnValidWhenSendinMapJsonProperty()
     {
         gen.get()
                 .payload( "{\"foo\" : {\"bar\" : \"baz\"}}" )
                 .expectedStatus(
-                400 ).post( getDataUri() + "node/" );
+                201 ).post( getDataUri() + "node/" );
     }
 
     @Test

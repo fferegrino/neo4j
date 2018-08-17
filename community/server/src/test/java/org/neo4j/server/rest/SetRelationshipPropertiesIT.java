@@ -73,12 +73,12 @@ public class SetRelationshipPropertiesIT extends AbstractRestFunctionalDocTestBa
     }
 
     @Test
-    public void shouldReturn400WhenSendinIncompatibleJsonProperties()
+    public void shouldReturnValidWhenSendinMapJsonProperties()
     {
         Map<String, Object> map = new HashMap<>();
         map.put( "jim", new HashMap<String, Object>() );
         JaxRsResponse response = updatePropertiesOnServer(map);
-        assertEquals( 400, response.getStatus() );
+        assertEquals( 204, response.getStatus() );
         response.close();
     }
 
