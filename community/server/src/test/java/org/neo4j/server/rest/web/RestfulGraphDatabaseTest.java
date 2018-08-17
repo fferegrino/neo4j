@@ -265,15 +265,6 @@ public class RestfulGraphDatabaseTest
     }
 
     @Test
-    public void shouldRespondWith400WhenNodeCreatedWithUnsupportedPropertyData() throws Exception
-    {
-        Response response = service.createNode( "{\"foo\" : {\"bar\" : \"baz\"}}" );
-
-        assertEquals( 400, response.getStatus() );
-        assertEquals( Statement.ArgumentError.code().serialize(), singleErrorCode( response ) );
-    }
-
-    @Test
     public void shouldRespondWith400WhenNodeCreatedWithInvalidJSON() throws Exception
     {
         Response response = service.createNode( "this:::isNot::JSON}" );
@@ -565,19 +556,6 @@ public class RestfulGraphDatabaseTest
                 + "\", \"type\" ***and junk*** : \"LOVES\"}" );
         assertEquals( 400, response.getStatus() );
         assertEquals( Request.InvalidFormat.code().serialize(), singleErrorCode( response ) );
-    }
-
-    @Test
-    public void shouldRespondWith400WhenTryingToCreateRelationshipWithUnsupportedProperties() throws Exception
-
-    {
-        long startNode = helper.createNode();
-        long endNode = helper.createNode();
-        Response response = service.createRelationship( startNode,
-                "{\"to\" : \"" + BASE_URI + endNode
-                        + "\", \"type\" : \"LOVES\", \"data\" : {\"foo\" : {\"bar\" : \"baz\"}}}" );
-        assertEquals( 400, response.getStatus() );
-        assertEquals( Statement.ArgumentError.code().serialize(), singleErrorCode( response ) );
     }
 
     @Test
