@@ -177,6 +177,6 @@ public abstract class RepresentationDispatcher extends PropertyTypeDispatcher<St
     @Override
     protected Representation dispatchMap( Map<String, Object> property, String param )
     {
-        return new MapRepresentation(property);
+        return new MapRepresentation( property );
     }
 }
